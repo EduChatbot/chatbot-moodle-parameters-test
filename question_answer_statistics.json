@@ -1,0 +1,62 @@
+[
+    {
+    "question": "Who revived the term 'logistic' in 1925 to describe the population growth function developed by Verhulst?",
+    "ground_truth": "The name 'logistic' was revived by Yule in a presidential address to the Royal Statistical Society in 1925, after Verhulst's 19th-century work had been largely forgotten and independently reinvented by Pearl and Reed in 1920."
+    },
+    {
+    "question": "What are the three components that make up the decomposition of the expected prediction error at a fixed point x?",
+    "ground_truth": "According to the Bias-Variance decomposition theorem, the expected prediction error decomposes into: 1. The variance of y around its mean (noise), 2. The variance of the estimator around its mean (varS(fS(x))), and 3. The bias squared (bias(fS(x))^2), which is the difference between the average prediction and the true conditional mean."
+    },
+    {
+    "question": "In the context of the Apriori algorithm, what is the 'downward closure' property of support?",
+    "ground_truth": "Downward closure is a monotonicity property stating that if an itemset is frequent (meaning its support is greater than or equal to a threshold theta), then all of its subsets must also be frequent. Mathematically, Supp(a U b) <= Supp(a), so if a U b is frequent, a must also be frequent."
+    },
+    {
+    "question": "Which R package is required to implement Support Vector Machines (SVM) and Naïve Bayes as mentioned in the tutorials?",
+    "ground_truth": "The 'e1071' package is the additional R package required to obtain the functions for both Support Vector Machines (svm) and Naïve Bayes (naiveBayes)."
+    },
+    {
+    "question": "What specific node impurity measure is used by the CART algorithm for classification tasks?",
+    "ground_truth": "For classification splitting, the CART algorithm specifically uses the Gini index, which is defined as 2p(1-p) for two-class classification."
+    },
+    {
+    "question": "Explain the two iterative steps of the K-Means algorithm and what is required before the algorithm starts.",
+    "ground_truth": "Before starting, the user must choose the value of K (the number of clusters). The algorithm then repeats two steps until the cost no longer changes: 1. Assignment step: each data point is assigned to its closest cluster representative (Ck = {xi : the closest representative is zk}). 2. Update step: each cluster center is re-calculated as the mean of the points currently assigned to that cluster (zk = mean(Ck))."
+    },
+    {
+    "question": "How does the Naïve Bayes algorithm handle high-dimensional data where a specific feature value might not appear in the training set for a given class?",
+    "ground_truth": "Naïve Bayes uses 'Laplace smoothing' (a Bayesian shrinkage estimate) to prevent probabilities from becoming zero. It adds hallucinated examples (1 to the numerator and K, the number of distinct values, to the denominator) to pull the empirical probability estimates toward 1/K, ensuring that a single missing feature value doesn't zero out the entire product of conditional probabilities."
+    },
+    {
+    "question": "Describe the logic behind using the 'Gain Ratio' instead of 'Information Gain' as a splitting criterion in decision trees.",
+    "ground_truth": "Information Gain tends to favor attributes that partition the data into many small, pure branches (numerous splits), which can lead to overfitting. The Gain Ratio addresses this by penalizing such attributes. It divides the Information Gain by 'SplitInfo', which measures the size and number of partitions; this favors attributes that achieve high gain while maintaining larger, more meaningful branches."
+    },
+    {
+    "question": "According to Lemma 1 in the clustering notes, why is the mean the optimal location for a cluster representative?",
+    "ground_truth": "Lemma 1 proves that for any set C and any representative z, the cost(C, z) equals cost(C, mean(C)) + |C| * ||z - mean(C)||^2. Because the second term is a squared norm multiplied by the number of points, it is always non-negative and is only minimized (becoming zero) when z equals the mean of C. Thus, placing the representative at the mean minimizes the sum of squared distances."
+    },
+    {
+    "question": "What are the three options C4.5 considers when deciding whether to prune a branch of a decision tree?",
+    "ground_truth": "At each node, C4.5 recursively evaluates three options: 1. Leaving the tree as it is. 2. Replacing that part of the tree with a leaf node containing the most frequent label in the data going to that branch. 3. Replacing that part of the tree with one of its subtrees (the most common branch in the split). It chooses the option with the lowest calculated upper bound on the probability of error."
+    },
+    {
+    "question": "Compare the fundamental goals and requirements of supervised learning versus unsupervised learning using examples from the text.",
+    "ground_truth": "Supervised learning requires 'instances with labels' (ground truth) to learn a function that predicts a label y for an input x; examples include classification (e.g., handwriting recognition) and regression (e.g., predicting stock prices). Unsupervised learning has no labels or ground truth; it seeks to find inherent patterns or groupings in data. Examples include clustering (e.g., K-Means for market research) and rule mining (e.g., Apriori for finding 'Diapers -> Beer' correlations)."
+    },
+    {
+    "question": "Explain how the origins of the logistic function in 19th-century population studies relate to the mathematical necessity of the 'log odds' in modern logistic regression classification.",
+    "ground_truth": "The logistic function was originally created by Verhulst to model population growth that resists further increase as it reaches a saturation limit, ensuring values stay between 0 and 1. In classification, we want to use a linear combination of features (lambda^T * x), which can range from -infinity to +infinity. The 'log odds' (logit) is used because it maps the 0-1 probability range to the entire real number line, allowing a linear model to represent probabilities while the logistic function (the inverse logit) maps the linear output back into a valid 0-1 probability range."
+    },
+    {
+    "question": "Synthesize the relationship between model complexity, bias, and variance. How should a model be structured to achieve good generalization?",
+    "ground_truth": "Model complexity creates a tradeoff: simpler models (like low-degree polynomials) have high bias but low variance (less 'wiggly'), while complex models have low bias but high variance (high sensitivity to noise). Overfitting occurs when a model fits the data perfectly but fails to generalize. To achieve good generalization, one must strike a balance by imposing 'structure' or 'regularization' (e.g., Structural Risk Minimization) to keep the class of functions small enough to reduce variance while still fitting the data well enough to keep bias low."
+    },
+    {
+    "question": "Contrast the splitting and pruning criteria used by the C4.5 and CART algorithms.",
+    "ground_truth": "For splitting, C4.5 uses Information Gain (or Gain Ratio) and can perform multiway splits, whereas CART uses the Gini Index and is restricted to binary splits. For pruning, C4.5 calculates upper bounds on the probability of error using a binomial distribution and a confidence level (default alpha=0.25). CART uses 'minimal cost complexity' pruning, which minimizes a cost function composed of the misclassification error plus a regularization term (C * number of leaves), generating a sequence of nested subtrees for different values of C."
+    },
+    {
+    "question": "How does the CART algorithm apply the principle of least squares to both the construction of regression trees and the assignment of values to leaf nodes?",
+    "ground_truth": "CART constructs regression trees by greedily selecting the attribute A and split point s that minimize the least squares loss across the resulting partitions. Once the partitions are set, CART assigns each leaf node a constant value fj. To minimize the empirical training error (least squares loss), the derivative of the error with respect to fj is set to zero, which mathematically results in fj being the sample average (mean) of the labels for the examples in that specific leaf."
+    }
+    ]
