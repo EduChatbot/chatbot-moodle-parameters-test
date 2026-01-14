@@ -1,0 +1,216 @@
+[
+  {
+    "config_label": "quiz_prompt_verbose",
+    "test_type": "materials_5_6",
+    "materialIds": [
+      5,
+      6
+    ],
+    "quiz_data": {
+      "quizId": 34,
+      "courseId": 11,
+      "materialIds": [
+        5,
+        6
+      ],
+      "section": null,
+      "quizTitle": "Clustering and K-Nearest Neighbors Quiz",
+      "questions": [
+        {
+          "id": 286,
+          "question": "What is the primary goal of clustering algorithms?",
+          "options": [
+            "To predict future data points based on historical trends.",
+            "To segment a collection of examples into clusters where objects within a cluster are more closely related than objects assigned to different clusters.",
+            "To classify data points into predefined categories based on labeled training data.",
+            "To reduce the dimensionality of the data while preserving its essential structure."
+          ],
+          "correctAnswer": 1,
+          "explanation": "The primary goal of clustering is to segment data into clusters such that objects within a cluster are more related to each other than to objects in other clusters (CHUNK_38). The other options describe prediction, classification, and dimensionality reduction, which are different machine learning tasks.",
+          "source": {
+            "chunkId": 38,
+            "fileName": "Clustering.pdf",
+            "chunkText": "Clustering\n\nMIT 15.097 Course Notes Cynthia Rudin and S¸eyda Ertekin\n\nCredit: Dasgupta, Hastie, Tibshirani, Friedman\n\nClustering (a.k.a. data segmentation) Let’s segment a collection of examples into “clusters” so that objects within a cluster are more closely related to one another than objects assigned to different clusters. We want to assign each ex­ ample xi to a cluster k ∈{1, ...., K}.\n\nThe K-Means algorithm is a very popular way to do this. It assumes points lie\nin Euclidean space.\n\nn Input: Finite set {x }m\ni 1=1, xi ∈ R\nOutput: z1, ..., zK cluster centers\n\nGoal: Minimize\n\ncost(z1, ..., zK ) :=\nmin Ixi − zkI2\n\n2. k i The choice of the squared norm is fortuitous, it really helps simplify the math!\n\nn If we’re given points {zk}k, they can induce a Voronoi p artition of R : they break the space into cells where each cell corresponds to one of the zk’s. That is, each cell contains the region of space whose nearest representative is zk.\n\nDraw a picture\n\nWe can look at the examples in each of these regions of space, which are the clusters. Specifically,\n\nCk := {xi : the closest representative to xi is zk}.\n\nLet’s compute the cost another way. Before, we summed over examples, and then picked the right representative zk for each example. This time, we’ll sum over clusters, and look at all the examples in that cluster:\n\ncost(z1, ..., zK ) =\nIxi − zkI2\n\n2.\n\nk {i:xi∈Ck}\n\n1"
+          },
+          "grade": null,
+          "feedback": null
+        },
+        {
+          "id": 287,
+          "question": "What key assumption does the K-Means algorithm make about the data?",
+          "options": [
+            "The data points are normally distributed.",
+            "The data points lie in Euclidean space.",
+            "The data points are linearly separable.",
+            "The data points are categorical."
+          ],
+          "correctAnswer": 1,
+          "explanation": "The K-Means algorithm assumes that the data points lie in Euclidean space (CHUNK_38). The other options are not assumptions of K-Means. Normality, linear separability, and categorical data are relevant to other algorithms, but not K-Means.",
+          "source": {
+            "chunkId": 38,
+            "fileName": "Clustering.pdf",
+            "chunkText": "Clustering\n\nMIT 15.097 Course Notes Cynthia Rudin and S¸eyda Ertekin\n\nCredit: Dasgupta, Hastie, Tibshirani, Friedman\n\nClustering (a.k.a. data segmentation) Let’s segment a collection of examples into “clusters” so that objects within a cluster are more closely related to one another than objects assigned to different clusters. We want to assign each ex­ ample xi to a cluster k ∈{1, ...., K}.\n\nThe K-Means algorithm is a very popular way to do this. It assumes points lie\nin Euclidean space.\n\nn Input: Finite set {x }m\ni 1=1, xi ∈ R\nOutput: z1, ..., zK cluster centers\n\nGoal: Minimize\n\ncost(z1, ..., zK ) :=\nmin Ixi − zkI2\n\n2. k i The choice of the squared norm is fortuitous, it really helps simplify the math!\n\nn If we’re given points {zk}k, they can induce a Voronoi p artition of R : they break the space into cells where each cell corresponds to one of the zk’s. That is, each cell contains the region of space whose nearest representative is zk.\n\nDraw a picture\n\nWe can look at the examples in each of these regions of space, which are the clusters. Specifically,\n\nCk := {xi : the closest representative to xi is zk}.\n\nLet’s compute the cost another way. Before, we summed over examples, and then picked the right representative zk for each example. This time, we’ll sum over clusters, and look at all the examples in that cluster:\n\ncost(z1, ..., zK ) =\nIxi − zkI2\n\n2.\n\nk {i:xi∈Ck}\n\n1"
+          },
+          "grade": null,
+          "feedback": null
+        },
+        {
+          "id": 288,
+          "question": "In the context of K-Means, what is a Voronoi partition?",
+          "options": [
+            "A method for visualizing high-dimensional data.",
+            "A way to measure the distance between data points.",
+            "A division of space into cells, where each cell corresponds to the region closest to one of the cluster centers.",
+            "A technique for initializing cluster centers."
+          ],
+          "correctAnswer": 2,
+          "explanation": "A Voronoi partition divides the space into cells, where each cell contains the region of space whose nearest representative is a cluster center (CHUNK_38). The other options are not accurate descriptions of a Voronoi partition.",
+          "source": {
+            "chunkId": 38,
+            "fileName": "Clustering.pdf",
+            "chunkText": "Clustering\n\nMIT 15.097 Course Notes Cynthia Rudin and S¸eyda Ertekin\n\nCredit: Dasgupta, Hastie, Tibshirani, Friedman\n\nClustering (a.k.a. data segmentation) Let’s segment a collection of examples into “clusters” so that objects within a cluster are more closely related to one another than objects assigned to different clusters. We want to assign each ex­ ample xi to a cluster k ∈{1, ...., K}.\n\nThe K-Means algorithm is a very popular way to do this. It assumes points lie\nin Euclidean space.\n\nn Input: Finite set {x }m\ni 1=1, xi ∈ R\nOutput: z1, ..., zK cluster centers\n\nGoal: Minimize\n\ncost(z1, ..., zK ) :=\nmin Ixi − zkI2\n\n2. k i The choice of the squared norm is fortuitous, it really helps simplify the math!\n\nn If we’re given points {zk}k, they can induce a Voronoi p artition of R : they break the space into cells where each cell corresponds to one of the zk’s. That is, each cell contains the region of space whose nearest representative is zk.\n\nDraw a picture\n\nWe can look at the examples in each of these regions of space, which are the clusters. Specifically,\n\nCk := {xi : the closest representative to xi is zk}.\n\nLet’s compute the cost another way. Before, we summed over examples, and then picked the right representative zk for each example. This time, we’ll sum over clusters, and look at all the examples in that cluster:\n\ncost(z1, ..., zK ) =\nIxi − zkI2\n\n2.\n\nk {i:xi∈Ck}\n\n1"
+          },
+          "grade": null,
+          "feedback": null
+        },
+        {
+          "id": 289,
+          "question": "According to Lemma 1, where should the representative 'z' be placed to minimize the cost for a single cluster C?",
+          "options": [
+            "At a randomly chosen point within C.",
+            "At the median of the examples in C.",
+            "At the point farthest from the center of C.",
+            "At the mean of the examples in C."
+          ],
+          "correctAnswer": 3,
+          "explanation": "Lemma 1 suggests that the representative 'z' should be placed at the mean of the examples in cluster C to minimize the cost (CHUNK_39). Placing it randomly, at the median, or at the farthest point would not minimize the cost as effectively.",
+          "source": {
+            "chunkId": 39,
+            "fileName": "Clustering.pdf",
+            "chunkText": "While we’re analyzing, we’ll need to consider suboptimal partitions of the data, where an example might not be assigned to the nearest representative. So we redefine the cost:\n\nX X\n\nk ∥xi −zk∥2 2. (1)\n\ncost(C1, ..., CK; z1, ..., zK) =\n\n{i:xi∈Ck}\n\nLet’s say we only have one cluster to deal with. Call it C. The representative is z. The cost is then:\ncost(C; z) =\n∥xi −z∥2 2.\n\nX\n\n{ ∈} Where should we place z?\n\ni:xi C\n\nAs you probably guessed, we would put it at the mean of the examples in C. But\nalso, the additional cost incurred by picking z = mean(C) can be characterized\nvery simply:\n\n̸\n\nLemma 1. For any set C ⊂Rn and any z ∈Rn,\n\ncost(C; z) = cost(C, mean(C)) + C\nz mean(C) 2 2. | | · ∥− ∥\n\nLet’s go ahead and prove it. In order to do that, we need to do another biasvariance decomposition (this one’s pretty much identical to one of the ones we did before).\n\nLemma 2. Let X Rn be any random variable. For any z Rn, we have: ∈ ∈\n\nEX∥X −z∥2\n2 = EX∥X −EXX∥2\n2 + ∥z −EXX∥2\n2.\n\nProof. Let x¯ := EXX.\n\nj −z(j))2 X\n\nEX∥X −z∥2\n2 = EX\n(X(j)\n\nj\n−x¯(j) + x¯(j) −zj)2\nX\n\n= EX\n(X(j)\n\nj\n−x¯(j))2 + EX\n(x¯(j)\n\nj −zj)2 X X\n\n= EX\n(X(j)\n\nj −x¯(j))(x¯(j) −z(j)) X\n\n+2EX\n(X(j)\n\n= EX∥X −x¯∥2\n2 + EX∥x¯ −z∥2\n2 + 0. ■\n\n2"
+          },
+          "grade": null,
+          "feedback": null
+        },
+        {
+          "id": 290,
+          "question": "What is the time complexity per iteration of the K-Means algorithm, where K is the number of clusters and m is the number of data points?",
+          "options": [
+            "O(K^2)",
+            "O(m^2)",
+            "O(Km)",
+            "O(K+m)"
+          ],
+          "correctAnswer": 2,
+          "explanation": "The K-Means algorithm takes O(Km) time per iteration, where K is the number of clusters and m is the number of data points (CHUNK_41). This is because each of the m data points needs to be assigned to one of the K clusters, and then the means of each cluster need to be recalculated.",
+          "source": {
+            "chunkId": 41,
+            "fileName": "Clustering.pdf",
+            "chunkText": "The K-Means Algorithm\n\nChoose the value of K before you start.\n\nn Initialize centers z1, ..., zK ∈ R and clusters C1, ..., CK in any way. Repeat until there is no further change in cost: for each k: Ck ←{xi : the closest representative is zk}\nfor each k: zk = mean(Ck)\n\nThis is simple enough, and takes O(Km) time per iteration.\n\nPPT demo\n\nOf course, it doesn’t always converge to the optimal solution.\n\nBut does the cost converge?\n\nLemma 3. During the course of the K-Means algorithm, the cost monotonically\ndecreases.\n\n(t) (t) (t) (t) Proof. Let z1 , ..., zK , C1 , ..., CK denote the centers and clusters at the start of\nthe tth iterate of K-Means. The first step of the iteration assigns each data point\nto its closest center, therefore, the cluster assignment is better:\n\n(t+1)\n(t+1)\n(t) (t) (t) (t) (t) (t) cost(C1 , ..., CK , z1 , ..., zK ) ≤ cost(C1 , ..., CK , z1 , ..., zK ).\n\nOn the second step, each cluster is re-centered at its mean, so the representatives\nare better. By Lemma 1,\n\n(t+1)\n(t+1)\n(t+1)\n(t+1)\n(t+1)\n(t+1)\n(t) (t) cost(C1 , ..., CK , z1 , ..., zK ) ≤ cost(C1 , ..., CK , z1 , ..., zK ).\n\n•\n\nSo does the cost converge?\n\n4"
+          },
+          "grade": null,
+          "feedback": null
+        },
+        {
+          "id": 291,
+          "question": "According to Lemma 3, what happens to the cost during the course of the K-Means algorithm?",
+          "options": [
+            "The cost monotonically increases.",
+            "The cost remains constant.",
+            "The cost oscillates randomly.",
+            "The cost monotonically decreases."
+          ],
+          "correctAnswer": 3,
+          "explanation": "Lemma 3 states that the cost monotonically decreases during the course of the K-Means algorithm (CHUNK_41). This is because each step of the algorithm improves either the cluster assignments or the cluster centers, leading to a lower cost.",
+          "source": {
+            "chunkId": 41,
+            "fileName": "Clustering.pdf",
+            "chunkText": "The K-Means Algorithm\n\nChoose the value of K before you start.\n\nn Initialize centers z1, ..., zK ∈ R and clusters C1, ..., CK in any way. Repeat until there is no further change in cost: for each k: Ck ←{xi : the closest representative is zk}\nfor each k: zk = mean(Ck)\n\nThis is simple enough, and takes O(Km) time per iteration.\n\nPPT demo\n\nOf course, it doesn’t always converge to the optimal solution.\n\nBut does the cost converge?\n\nLemma 3. During the course of the K-Means algorithm, the cost monotonically\ndecreases.\n\n(t) (t) (t) (t) Proof. Let z1 , ..., zK , C1 , ..., CK denote the centers and clusters at the start of\nthe tth iterate of K-Means. The first step of the iteration assigns each data point\nto its closest center, therefore, the cluster assignment is better:\n\n(t+1)\n(t+1)\n(t) (t) (t) (t) (t) (t) cost(C1 , ..., CK , z1 , ..., zK ) ≤ cost(C1 , ..., CK , z1 , ..., zK ).\n\nOn the second step, each cluster is re-centered at its mean, so the representatives\nare better. By Lemma 1,\n\n(t+1)\n(t+1)\n(t+1)\n(t+1)\n(t+1)\n(t+1)\n(t) (t) cost(C1 , ..., CK , z1 , ..., zK ) ≤ cost(C1 , ..., CK , z1 , ..., zK ).\n\n•\n\nSo does the cost converge?\n\n4"
+          },
+          "grade": null,
+          "feedback": null
+        },
+        {
+          "id": 292,
+          "question": "Which of the following is NOT a method for evaluating clusters?",
+          "options": [
+            "Davies-Baldwin Index",
+            "Dunn Index",
+            "Test Error",
+            "Intra-cluster distance"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Test error is not a direct measure of cluster validity because clustering is typically performed on unlabeled data. The Davies-Baldwin Index and Dunn Index are cluster validity measures (CHUNK_42). Intra-cluster distance is a component used in some cluster validity measures.",
+          "source": {
+            "chunkId": 42,
+            "fileName": "Clustering.pdf",
+            "chunkText": "Example of how K-Means could converge to the wrong thing\n\nHow might you make K-Means more likely to converge to the optimal?\n\nHow might you choose K? (Why can’t you measure test error?)\n\nOther ways to evaluate clusters (“cluster validation”)\n\nThere are loads of cluster validity measures, alternatives to the cost. Draw a picture\n\n• Davies-Baldwin Index - looks at average intracluster distance (within-cluster\ndistance) to the centroid (want it to be small), and intercluster distances between centroids (want it to be large).\n\n• Dunn Index - looks pairwise at minimal intercluster distance (want it to be\nlarge) and maximal intracluster distance (want it to be small).\n\nExample: Microarray data. Have 6830 genes (rows) and 64 patients (columns). The color of each box is a measurement of the expression level of a gene. The expression level of a gene is basically how much of its special protein it is pro­ ducing. The physical chip itself doesn’t actually measure protein levels, but a proxy for them (which is RNA, which sticks to the DNA on the chip). If the color is green, it means low expression levels, if the color is red, it means higher expression levels. Each patient is represented by a vector, which is the expression level of their genes. It’s a column vector with values given in color:\n\n5"
+          },
+          "grade": null,
+          "feedback": null
+        },
+        {
+          "id": 293,
+          "question": "What is a major issue with K-means as K changes?",
+          "options": [
+            "The algorithm becomes computationally intractable.",
+            "Cluster membership can change arbitrarily.",
+            "The cost always increases.",
+            "The algorithm always converges to the optimal solution."
+          ],
+          "correctAnswer": 1,
+          "explanation": "A major issue with K-means is that as K changes, cluster membership can change arbitrarily (CHUNK_44). This means that adding or removing a cluster can significantly alter the assignments of data points, making it difficult to compare results across different values of K.",
+          "source": {
+            "chunkId": 44,
+            "fileName": "Clustering.pdf",
+            "chunkText": "It’s pretty good at keeping the same cancers in the same cluster. The two breast cancers in the 2nd cluster were actually melanomas that metastasized.\n\nGenerally we cluster genes, not patients. Would really like to get something like this in practice:\n\nCourtesy of the Rockefeller University Press. Used with permission.\n\nFigure 7 from Rumfelt, Lynn, et al. \"Lineage Specification and Plasticity in CD19- Early B\ncell Precursors.\" Journal of Experimental Medicine 203 (2006): 675-87.\n\nwhere each row is a gene, and the columns are different immune cell types.\n\nA major issue with K-means: as K changes, cluster membership can change\narbitrarily. A solution is Hierarchical Clustering.\n\n• clusters at the next level of the hierarchy are created by merging clusters at the next lowest level.\n\n– lowest level: each cluster has 1 example\n\n– highest level: there’s only 1 cluster, containing all of the data.\n\n7\n\n[IMAGE_OCR 1] MLP CLP Fr.A Fr. B&C A uma B pw EBFI c D ot"
+          },
+          "grade": null,
+          "feedback": null
+        },
+        {
+          "id": 294,
+          "question": "What is a characteristic of Hierarchical Clustering that addresses a limitation of K-Means?",
+          "options": [
+            "It always converges to the optimal solution.",
+            "It provides a hierarchy of clusters, showing how clusters merge at different levels.",
+            "It is less sensitive to the initial placement of cluster centers.",
+            "It can handle non-Euclidean data."
+          ],
+          "correctAnswer": 1,
+          "explanation": "Hierarchical clustering creates clusters at different levels of hierarchy by merging clusters at the next lowest level, addressing the issue of arbitrary cluster membership changes in K-Means (CHUNK_44). The other options are not specific advantages of hierarchical clustering over K-Means.",
+          "source": {
+            "chunkId": 44,
+            "fileName": "Clustering.pdf",
+            "chunkText": "It’s pretty good at keeping the same cancers in the same cluster. The two breast cancers in the 2nd cluster were actually melanomas that metastasized.\n\nGenerally we cluster genes, not patients. Would really like to get something like this in practice:\n\nCourtesy of the Rockefeller University Press. Used with permission.\n\nFigure 7 from Rumfelt, Lynn, et al. \"Lineage Specification and Plasticity in CD19- Early B\ncell Precursors.\" Journal of Experimental Medicine 203 (2006): 675-87.\n\nwhere each row is a gene, and the columns are different immune cell types.\n\nA major issue with K-means: as K changes, cluster membership can change\narbitrarily. A solution is Hierarchical Clustering.\n\n• clusters at the next level of the hierarchy are created by merging clusters at the next lowest level.\n\n– lowest level: each cluster has 1 example\n\n– highest level: there’s only 1 cluster, containing all of the data.\n\n7\n\n[IMAGE_OCR 1] MLP CLP Fr.A Fr. B&C A uma B pw EBFI c D ot"
+          },
+          "grade": null,
+          "feedback": null
+        },
+        {
+          "id": 295,
+          "question": "What is the main idea behind the K-Nearest Neighbors (K-NN) algorithm?",
+          "options": [
+            "To explicitly compute decision boundaries based on training data.",
+            "To classify a data point based on the majority vote of its K nearest neighbors.",
+            "To minimize the distance between data points within the same class.",
+            "To find the optimal number of clusters in a dataset."
+          ],
+          "correctAnswer": 1,
+          "explanation": "The K-NN algorithm classifies a data point based on the majority vote of its K nearest neighbors (CHUNK_47). It does not explicitly compute decision boundaries, nor does it focus on minimizing distances within classes or finding the optimal number of clusters.",
+          "source": {
+            "chunkId": 47,
+            "fileName": "k-nearest neighbpurs.pdf",
+            "chunkText": "K-NN\n\n15.097 MIT, Spring 2012, Cynthia Rudin Credit: Seyda Ertekin\n\nK-Nearest Neighbors\n\n• Amongst the simplest of all machine learning algorithms. No eXplicit training or model. • Can be used both for classifcaton and regression.\n• Use XIs K-Nearest Neighbors to vote on what\nXIs label should be.\n\n1"
+          },
+          "grade": null,
+          "feedback": null
+        }
+      ]
+    },
+    "num_questions_requested": 10,
+    "num_questions_generated": 10,
+    "latency": 27.09,
+    "error": null
+  }
+]
