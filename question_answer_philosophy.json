@@ -1,62 +1,82 @@
 [
-    {
-      "question": "What is the Greek word for 'happiness' according to the sources, and what is its alternative translation?",
-      "ground_truth": "The Greek word for 'happiness' is 'eudaimonia', which can also be translated as 'flourishing'. It is a compound of 'eu-' (meaning 'good' or 'well') and 'daimon' (meaning 'a minor divinity' or 'guardian spirit')."
-    },
-    {
-      "question": "What are the birth and death years of René Descartes, and in what language was his 'Meditations on First Philosophy' originally published?",
-      "ground_truth": "René Descartes was born in 1596 and died in 1650. His work 'Meditations on First Philosophy' was published in Latin in 1641."
-    },
-    {
-      "question": "According to Book I, Chapter 7 of the Nichomachean Ethics, what are the three stages of the Function Argument?",
-      "ground_truth": "The three stages are: (i) the existence of a human function, (ii) the nature of the human function, and (iii) the link between the human function and happiness."
-    },
-    {
-      "question": "Define the 'articulation condition' as it relates to Socratic knowledge.",
-      "ground_truth": "The articulation condition states that if a person (S) is knowledgeable about a subject (X), then S will be able to offer a Socratically-acceptable definition of X."
-    },
-    {
-      "question": "What is Aristotle's formal definition of the soul (psuchē) in 'De Anima'?",
-      "ground_truth": "Aristotle defines the soul as the 'first actuality of a natural body that is potentially alive' or, similarly, the 'first actuality of a natural organic body'."
-    },
-    {
-      "question": "Explain Aristotle's reasoning for why a well-ordered life must be organized around a single 'supreme good'.",
-      "ground_truth": "Aristotle argues that if we do not choose things for the sake of an ultimate end, the process of desire would go on to infinity, making our desires 'empty and vain'. Furthermore, he suggests that a single ultimate end is necessary to rank various life goals in order of priority when they conflict, allowing for rational decision-making."
-    },
-    {
-      "question": "Describe Descartes' 'Dream Argument' and explain why he believes there is no 'sure sign' of being awake.",
-      "ground_truth": "Descartes notes that during sleep, he is often persuaded of ordinary experiences, like sitting by a fire in a dressing gown, while actually lying undressed in bed. He argues that because there are no definitive qualitative signs based on experience alone to distinguish being awake from dreaming, the senses cannot provide a secure foundation for knowledge."
-    },
-    {
-      "question": "What is the 'Socratic Elenchus', and what are its two primary purposes according to the sources?",
-      "ground_truth": "The Socratic elenchus is a standard pattern of cross-examination where Socrates secures agreement on premises (Q and R) that ultimately entail the negation of the interlocutor's original thesis (P). Its purposes are philosophical (to discover truths about how one ought to live) and therapeutic (to test the interlocutor's virtue and determine if they are living a moral life)."
-    },
-    {
-      "question": "How does Aristotle use the comparison of an axe to illustrate his concept of the soul?",
-      "ground_truth": "Aristotle suggests that if an axe were a natural body, 'being an axe' (its ability to cut) would be its essence and thus its 'soul'. This illustrates that the soul is not a mysterious separate entity, but rather a specific power or ability organized to perform a function, which ceases to exist (except in name) if that power is lost."
-    },
-    {
-      "question": "Why does Socrates argue in the 'Meno' that no one desires what is 'bad'?",
-      "ground_truth": "Socrates argues that people only desire things they believe will benefit them. He distinguishes between desiring bad things while knowing they are bad (which he deems impossible) and desiring bad things while believing they are good. He concludes it is not in human nature to prefer what one thinks is bad over what is good."
-    },
-    {
-      "question": "Compare and contrast the views of Plato and Aristotle regarding the relationship between the body and the soul.",
-      "ground_truth": "Plato's dualism (as seen in the 'Phaedo') views souls and bodies as radically different, independent, and separable kinds of things. In contrast, Aristotle’s hylomorphism views form (soul) and matter (body) as two aspects of a single individual thing. For Aristotle, the soul and body are interdependent, much like wax and its shape; they constitute a single entity and cannot exist separately."
-    },
-    {
-      "question": "Trace the logical progression from the Socratic thesis 'Virtue is Knowledge' to the conclusion that 'No one does harm deliberately'.",
-      "ground_truth": "Socrates identifies virtue with moral knowledge. From this, it follows that any person who lacks virtue must also lack moral knowledge, meaning they are acting out of ignorance. Since action based on ignorance is not considered deliberate or voluntary, any wrongdoing (injustice or harm) must be involuntary, as it is a failure of knowledge rather than a deliberate choice to be bad."
-    },
-    {
-      "question": "Synthesize Aristotle's 'Function Argument' with his criteria for 'eudaimonia' to explain why the perfect life consists of activity in accordance with virtue.",
-      "ground_truth": "Aristotle establishes that happiness (eudaimonia) is the supreme good because it is final, complete, and self-sufficient. Through the Function Argument, he determines that the unique human function is 'activity of the soul in accord with reason'. Because the virtue of a thing is what enables it to perform its function well, the human good (happiness) must specifically be an 'activity of the soul in accord with excellence' or virtue. Therefore, the life of flourishing is one spent actively exercising human excellence."
-    },
-    {
-      "question": "How does the distinction between 'external interference' and 'internal interference' structure Descartes' skeptical progression in Meditation 1?",
-      "ground_truth": "Descartes first addresses external interference where favorable circumstances (like light or distance) are missing, leading to optical illusions. To find a secure foundation, he adjusts his principle to assume circumstances are favorable. However, he then encounters internal interference, such as madness or hallucination, where the perceiver is incompetent. This leads him to distinguish competent from incompetent perceivers, eventually arriving at the dream argument where no internal or external sign can guarantee competence in distinguishing waking life from sleep."
-    },
-    {
-      "question": "Analyze how Socrates' 'disavowal of knowledge' is reconciled with his claim to 'human wisdom' through the use of the elenchus.",
-      "ground_truth": "Socrates uses the elenchus to reveal hidden inconsistencies in his interlocutors' beliefs, proving they lack knowledge. His own 'human wisdom' is the awareness of this fallibility and the recognition of how little he knows compared to infallible divine knowledge. By constantly testing and retesting his own beliefs for coherence, he respects the difficulty of achieving consistency, which he believes is the hallmark of human wisdom even if it does not reach the level of certain, divine knowledge."
-    }
-  ]
+  {
+    "question": "What does the term 'eudaimonia' mean in Aristotle’s philosophy, and what is its literal Greek breakdown?",
+    "ground_truth": "The term 'eudaimonia' is usually translated as 'happiness' but can also be translated as 'flourishing.' It is a compound word: 'eu-' means 'good' or 'well,' and 'daimon' means 'a minor divinity' or 'guardian spirit.' A person is eudaimon when things are going really well for them."
+  },
+  {
+    "question": "When was René Descartes born and when did he die? In what year and language was his 'Meditations on First Philosophy' first published?",
+    "ground_truth": "René Descartes was born in 1596 and died in 1650. His work 'Meditations on First Philosophy' was published in 1641 in Latin."
+  },
+  {
+    "question": "Aristotle describes a 'Function Argument' in Book I, Chapter 7 of the Nichomachean Ethics. What are the three specific stages of this argument?",
+    "ground_truth": "The three stages of the Function Argument are: (i) the existence of a human function, (ii) the nature of the human function, and (iii) the link between the human function and happiness."
+  },
+  {
+    "question": "How does Socrates explain why someone might appear to desire something 'bad'?",
+    "ground_truth": "Socrates argues that those who do not know things to be bad do not actually desire the bad things themselves; rather, they desire things they believe to be good, even if those things are actually bad in reality. He distinguishes between (a) desiring bad things while knowing they are bad and (b) desiring bad things while believing they are good, concluding that it is not in human nature to prefer what one thinks is bad over what is good."
+  },
+  {
+    "question": "Can you explain the three levels of potentiality and actuality using Aristotle’s example of a person speaking Greek?",
+    "ground_truth": "The three levels are: (i) First potentiality (1P), where a human infant has the capacity to learn Greek; (ii) Second potentiality/first actuality (2P/1A), where a person has learned Greek and can speak it but is currently sitting quietly; and (iii) Second actuality (2A), which is the state of a person actually speaking Greek."
+  },
+  {
+    "question": "What is Descartes' reason for undertaking a project of 'systematic doubt' in Meditation 1?",
+    "ground_truth": "Descartes believes that to establish anything 'firm and lasting in the sciences,' he must 'raze everything to the ground' and investigate his beliefs at their foundations. He uses the analogy of a house with rotten timber or a barrel of apples where one must tip all of them out to remove the rotten ones and prevent the rot from spreading to the rest."
+  },
+  {
+    "question": "Define the 'articulation condition' as it applies to Socratic knowledge.",
+    "ground_truth": "The articulation condition states that if a person (S) is knowledgeable about a subject (X), then S will be able to offer a Socratically-acceptable definition of X. In the context of virtue, if someone has a virtue, they should be able to explain or define what that virtue is."
+  },
+  {
+    "question": "Aristotle uses the examples of an axe and an eye to explain the soul. What is the main point of these comparisons?",
+    "ground_truth": "The comparisons illustrate that the soul is a capacity or power, not a separate substance. For an axe, its 'soul' would be 'being an axe' (its ability to cut). For an eye, its 'soul' would be sight. In both cases, the soul is inseparable from the material body (the wood/steel or the eye-jelly) and if the capacity is lost, the object is only that thing in name only."
+  },
+  {
+    "question": "Why does Socrates maintain that 'care of the soul' is the most important consideration in life?",
+    "ground_truth": "Socrates believes that a cared-for soul is the true basis of happiness and virtue. He argues that the ordinary person is mistaken in thinking desire satisfaction leads to happiness. Instead, because injustice harms the soul, following what is just is the only thing that matters, as a damaged soul leads to a life not worth living."
+  },
+  {
+    "question": "In Meditation 1, why does Descartes think that dreaming provides a stronger reason for doubt than simple optical illusions?",
+    "ground_truth": "Optical illusions are 'external interference' that occur in unfavorable circumstances (like a stick looking bent in water). However, the 'dream argument' suggests that there are no 'definitive signs' to distinguish being awake from being asleep. This means that even when circumstances seem favorable and the perceiver seems competent, they could still be mistaken, undermining the reliability of the senses entirely."
+  },
+  {
+    "question": "What is the difference between instrumental value and final value in Aristotle's framework of goods?",
+    "ground_truth": "Ends of instrumental value are those pursued for the sake of other ends (for example, money is sought for the sake of buying things like yachts). Ends of final value are those that are not for the sake of other things but are desired for their own sake. Aristotle identifies the supreme good as having final value."
+  },
+  {
+    "question": "What does Socrates mean by 'human wisdom' as opposed to divine knowledge?",
+    "ground_truth": "Socrates' human wisdom is an awareness of his own ignorance and the recognition of how little he knows. While he disavows absolute knowledge, he acknowledges the fallibility of human inquiry. This human wisdom consists largely in a kind of humility and the ongoing process of testing beliefs for consistency through the elenchus."
+  },
+  {
+    "question": "According to Aristotle in 'De Anima', what are the three hierarchical classes of capacities possessed by living things?",
+    "ground_truth": "The three hierarchical classes are: (i) Nutrition and generation (possessed by plants and animals), (ii) Perception (possessed by all animals), and (iii) Thinking or understanding (possessed by humans and superior beings like God)."
+  },
+  {
+    "question": "Explain the Socratic claim that 'no one can harm a good person.'",
+    "ground_truth": "Socrates believes that a person becomes good through (moral) knowledge, which is something that cannot be taken away. Since the soul and its moral well-being are of primary importance for happiness, external harms (like being robbed or beaten) do not affect what truly counts. Thus, a worse person cannot harm a good person because they cannot strip them of their virtue or knowledge."
+  },
+  {
+    "question": "Why does Descartes introduce the hypothesis of an 'evil genius' or 'malicious demon'?",
+    "ground_truth": "Descartes introduces the 'evil genius'—a being supremely powerful and clever—to see if he can doubt not just the external world, but also his reasoning about 'very general things' like arithmetic and geometry. This hypothesis allows him to admit that even his most basic rational judgments could be 'bedeviling hoaxes' designed to deceive him."
+  },
+  {
+    "question": "What is hylomorphism, and how does it distinguish Aristotle's view of the soul from Plato's?",
+    "ground_truth": "Hylomorphism is the view that all ordinary things are a complex of form and matter. Aristotle identifies the body as matter (potentiality) and the soul as form (actuality). Unlike Plato's dualism, which sees the soul and body as independent and separable entities, Aristotle's hylomorphism views them as interdependent aspects of a single individual, like the wax and its shape."
+  },
+  {
+    "question": "What are the four assumptions Socrates brings to his quest for definitions, as seen in the Euthyphro?",
+    "ground_truth": "The four assumptions are: (i) Commonality (there is a form/eidos that is the same in all instances), (ii) Explanatory Priority (the form is what makes things what they are), (iii) Ideal/Standard (the form is a standard for judgment), and (iv) Object of Definition (this form is the correct answer to the 'What is X?' question)."
+  },
+  {
+    "question": "Describe the 'Prudential Paradox' and the 'Moral Paradox' regarding Socratic views on action.",
+    "ground_truth": "The Prudential Paradox states that no one desires what is harmful for themselves, and those who pursue harm do so involuntarily. The Moral Paradox states that virtue is moral knowledge, and therefore all those who act immorally or do wrong do so involuntarily out of ignorance."
+  },
+  {
+    "question": "Aristotle lists 'self-sufficiency' as a requirement for the supreme good. How does he define a 'self-sufficient' life?",
+    "ground_truth": "Aristotle defines the self-sufficient as 'that which when isolated makes life desirable and lacking in nothing.' He argues that happiness (eudaimonia) meets this requirement because a happy life lacks nothing and is desirable in itself."
+  },
+  {
+    "question": "What is the 'Standard Pattern of Socratic Elenchus' used to refute a thesis?",
+    "ground_truth": "The standard pattern involves four steps: (1) The interlocutor asserts a target thesis P; (2) Socrates secures agreement to further premises Q and R; (3) Socrates argues that Q and R entail not-P; (4) Socrates claims that P has been shown false (or inconsistent) and not-P is true."
+  }
+]
