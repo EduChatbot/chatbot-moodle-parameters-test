@@ -7,210 +7,911 @@
       6
     ],
     "quiz_data": {
-      "quizId": 36,
+      "quizId": 66,
       "courseId": 11,
       "materialIds": [
         5,
         6
       ],
       "section": null,
-      "quizTitle": "K-Means Clustering and K-Nearest Neighbors Quiz",
+      "quizTitle": "K-Means Clustering Quiz",
       "questions": [
         {
-          "id": 306,
-          "question": "A data scientist is using K-Means to segment customers. They want to minimize the cost function. Which of the following best describes the cost function K-Means aims to minimize?",
+          "id": 811,
+          "question": "A data scientist is using K-Means to group customers. How should they determine the optimal number of clusters, K?",
           "options": [
-            "The sum of squared distances between each data point and its assigned cluster center.",
-            "The sum of distances between each data point and all other data points.",
-            "The average distance between all cluster centers.",
-            "The maximum distance between any two data points in the dataset."
+            "Measure test error directly.",
+            "Choose K based on business requirements, then validate using cluster validity measures.",
+            "Always choose the largest possible K.",
+            "Randomly select a K value."
+          ],
+          "correctAnswer": 1,
+          "explanation": "Measuring test error isn't directly applicable to unsupervised clustering. Choosing K based on business needs and then validating with measures like Davies-Baldwin or Dunn Index is the best approach. Choosing the largest possible K can lead to overfitting and meaningless clusters. Random selection is not a valid approach.",
+          "source": {
+            "chunkId": 190,
+            "fileName": "Clustering.pdf",
+            "chunkText": "Example of how K-Means could converge to the wrong thing\n\nHow might you make K-Means more likely to converge to the optimal?\n\nHow might you choose K? (Why can’t you measure test error?)\n\nOther ways to evaluate clusters (“cluster validation”)\n\nThere are loads of cluster validity measures, alternatives to the cost. Draw a picture\n\n• Davies-Baldwin Index - looks at average intracluster distance (within-cluster\ndistance) to the centroid (want it to be small), and intercluster distances between centroids (want i"
+          },
+          "grade": null,
+          "feedback": null
+        },
+        {
+          "id": 812,
+          "question": "A researcher is using K-Means to cluster gene expression data. What does a 'red' color in the gene expression vector typically indicate?",
+          "options": [
+            "Low expression levels",
+            "High expression levels",
+            "No expression",
+            "Average expression levels"
+          ],
+          "correctAnswer": 1,
+          "explanation": "In gene expression data, a red color typically indicates higher expression levels, while green indicates lower expression levels. This represents the amount of RNA, a proxy for protein production, associated with that gene.",
+          "source": {
+            "chunkId": 192,
+            "fileName": "Clustering.pdf",
+            "chunkText": "e expression level of a gene is basically how much of its special protein it is pro­ ducing. The physical chip itself doesn’t actually measure protein levels, but a proxy for them (which is RNA, which sticks to the DNA on the chip). If the color is green, it means low expression levels, if the color is red, it means higher expression levels. Each patient is represented by a vector, which is the expression level of their genes. It’s a column vector with values given in color:\n\n5"
+          },
+          "grade": null,
+          "feedback": null
+        },
+        {
+          "id": 813,
+          "question": "An analyst runs K-Means and observes that the cost function (sum of squared distances) is not decreasing with each iteration. What is the most likely cause?",
+          "options": [
+            "The algorithm is converging to the optimal solution.",
+            "There is an error in the implementation of the K-Means algorithm.",
+            "The value of K is too small.",
+            "The data is not suitable for clustering."
+          ],
+          "correctAnswer": 2,
+          "explanation": "According to Lemma 3, the cost function in K-Means should monotonically decrease with each iteration. If it's not, there's likely an error in the implementation. The algorithm is not converging to the optimal solution if the cost is not decreasing. The value of K or data suitability are less likely to cause a non-decreasing cost.",
+          "source": {
+            "chunkId": 41,
+            "fileName": "Clustering.pdf",
+            "chunkText": "The K-Means Algorithm\n\nChoose the value of K before you start.\n\nn Initialize centers z1, ..., zK ∈ R and clusters C1, ..., CK in any way. Repeat until there is no further change in cost: for each k: Ck ←{xi : the closest representative is zk}\nfor each k: zk = mean(Ck)\n\nThis is simple enough, and takes O(Km) time per iteration.\n\nPPT demo\n\nOf course, it doesn’t always converge to the optimal solution.\n\nBut does the cost converge?\n\nLemma 3. During the course of the K-Means algorithm, the cost monotonically\ndecreases.\n\n(t) (t) (t) (t) Proof. Let z1 , ..., zK , C1 , ..., CK denote the centers and clusters at the start of\nthe tth iterate of K-Means. The first step of the iteration assigns each data point\nto its closest center, therefore, the cluster assignment is better:\n\n(t+1)\n(t+1)\n(t) (t) (t) (t) (t) (t) cost(C1 , ..., CK , z1 , ..., zK ) ≤ cost(C1 , ..., CK , z1 , ..., zK ).\n\nOn the second step, each cluster is re-centered at its mean, so the representatives\nare better. By Lemma 1,\n\n(t+1)\n(t+1)\n(t+1)\n(t+1)\n(t+1)\n(t+1)\n(t) (t) cost(C1 , ..., CK , z1 , ..., zK ) ≤ cost(C1 , ..., CK , z1 , ..., zK ).\n\n•\n\nSo does the cost converge?\n\n4"
+          },
+          "grade": null,
+          "feedback": null
+        },
+        {
+          "id": 814,
+          "question": "A data scientist is using K-Means clustering. After the initial assignment, how are the cluster centers updated in each iteration?",
+          "options": [
+            "They are randomly re-initialized.",
+            "They are moved to the median of the data points in the cluster.",
+            "They are moved to the mean of the data points in the cluster.",
+            "They remain fixed after the initial assignment."
+          ],
+          "correctAnswer": 2,
+          "explanation": "In each iteration of K-Means, after assigning data points to the closest cluster, the cluster centers are updated by calculating the mean of all data points belonging to that cluster. This ensures the centers represent the 'average' location of the cluster's members.",
+          "source": {
+            "chunkId": 342,
+            "fileName": "Clustering.pdf",
+            "chunkText": "The K-Means Algorithm\n\nChoose the value of K before you start.\n\nn Initialize centers z1, ..., zK ∈ R and clusters C1, ..., CK in any way. Repeat until there is no further change in cost: for each k: Ck ←{xi : the closest representative is zk}\nfor each k: zk = mean(Ck)\n\nThis is simple enough, and takes O(Km) time per iteration.\n\nPPT demo\n\nOf course, it doesn’t always converge to the optimal solution.\n\nBut does the cost converge?\n\nLemma 3. During the course of the K-Means algorithm, the cost monotonically\ndecreases.\n\n(t) (t) (t) (t) Proof. Let z1 , ..., zK , C1 , ..., CK denote the centers and clusters at the start of\nthe tth iterate of K-Means. The first step of the iteration assigns each data point\nto its closest center, therefore, the cluster assignment is better:\n\n(t+1)\n(t+1)\n(t) (t) (t) (t) (t) (t) cost(C1 , ..., CK , z1 , ..., zK ) ≤ cost(C1 , ..., CK , z1 , ."
+          },
+          "grade": null,
+          "feedback": null
+        },
+        {
+          "id": 815,
+          "question": "A bioinformatician wants to group cancer patients based on gene expression data. Each patient's gene expression is represented as a vector. What does each element in this vector represent?",
+          "options": [
+            "The patient's age.",
+            "The expression level of a specific gene.",
+            "The patient's cancer stage.",
+            "The patient's treatment history."
+          ],
+          "correctAnswer": 1,
+          "explanation": "In this context, each element in the vector represents the expression level of a particular gene for that patient. This allows for clustering based on similar gene expression patterns, potentially indicating similar cancer subtypes.",
+          "source": {
+            "chunkId": 192,
+            "fileName": "Clustering.pdf",
+            "chunkText": "e expression level of a gene is basically how much of its special protein it is pro­ ducing. The physical chip itself doesn’t actually measure protein levels, but a proxy for them (which is RNA, which sticks to the DNA on the chip). If the color is green, it means low expression levels, if the color is red, it means higher expression levels. Each patient is represented by a vector, which is the expression level of their genes. It’s a column vector with values given in color:\n\n5"
+          },
+          "grade": null,
+          "feedback": null
+        },
+        {
+          "id": 816,
+          "question": "An engineer is using K-Means but wants to ensure the algorithm is more likely to find the optimal clustering. What can they do?",
+          "options": [
+            "Run K-Means only once.",
+            "Increase the value of K significantly.",
+            "Run K-Means multiple times with different initializations.",
+            "Decrease the value of K to 1."
+          ],
+          "correctAnswer": 2,
+          "explanation": "K-Means can converge to a local optimum. Running it multiple times with different random initializations increases the chance of finding a better (or the global) optimum. Running it only once or drastically changing K are not reliable strategies.",
+          "source": {
+            "chunkId": 190,
+            "fileName": "Clustering.pdf",
+            "chunkText": "Example of how K-Means could converge to the wrong thing\n\nHow might you make K-Means more likely to converge to the optimal?\n\nHow might you choose K? (Why can’t you measure test error?)\n\nOther ways to evaluate clusters (“cluster validation”)\n\nThere are loads of cluster validity measures, alternatives to the cost. Draw a picture\n\n• Davies-Baldwin Index - looks at average intracluster distance (within-cluster\ndistance) to the centroid (want it to be small), and intercluster distances between centroids (want i"
+          },
+          "grade": null,
+          "feedback": null
+        },
+        {
+          "id": 817,
+          "question": "A researcher is evaluating different clustering results. Which of the following describes the Davies-Baldwin Index?",
+          "options": [
+            "Minimal intercluster distance divided by maximal intracluster distance.",
+            "Average intracluster distance to centroid divided by intercluster distances between centroids.",
+            "The number of data points in each cluster.",
+            "The sum of squared errors."
+          ],
+          "correctAnswer": 1,
+          "explanation": "The Davies-Baldwin Index considers both the average intracluster distance (wanting it small) and the intercluster distances between centroids (wanting them large). A lower Davies-Baldwin Index indicates better clustering.",
+          "source": {
+            "chunkId": 190,
+            "fileName": "Clustering.pdf",
+            "chunkText": "Example of how K-Means could converge to the wrong thing\n\nHow might you make K-Means more likely to converge to the optimal?\n\nHow might you choose K? (Why can’t you measure test error?)\n\nOther ways to evaluate clusters (“cluster validation”)\n\nThere are loads of cluster validity measures, alternatives to the cost. Draw a picture\n\n• Davies-Baldwin Index - looks at average intracluster distance (within-cluster\ndistance) to the centroid (want it to be small), and intercluster distances between centroids (want i"
+          },
+          "grade": null,
+          "feedback": null
+        },
+        {
+          "id": 818,
+          "question": "A data scientist is using K-Means. What is the time complexity of each iteration of the algorithm, assuming 'm' data points and 'K' clusters?",
+          "options": [
+            "O(m)",
+            "O(K)",
+            "O(Km)",
+            "O(m+K)"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Each iteration of the K-Means algorithm involves assigning each of the 'm' data points to one of the 'K' clusters, and then recalculating the 'K' cluster means. This results in a time complexity of O(Km) per iteration.",
+          "source": {
+            "chunkId": 342,
+            "fileName": "Clustering.pdf",
+            "chunkText": "The K-Means Algorithm\n\nChoose the value of K before you start.\n\nn Initialize centers z1, ..., zK ∈ R and clusters C1, ..., CK in any way. Repeat until there is no further change in cost: for each k: Ck ←{xi : the closest representative is zk}\nfor each k: zk = mean(Ck)\n\nThis is simple enough, and takes O(Km) time per iteration.\n\nPPT demo\n\nOf course, it doesn’t always converge to the optimal solution.\n\nBut does the cost converge?\n\nLemma 3. During the course of the K-Means algorithm, the cost monotonically\ndecreases.\n\n(t) (t) (t) (t) Proof. Let z1 , ..., zK , C1 , ..., CK denote the centers and clusters at the start of\nthe tth iterate of K-Means. The first step of the iteration assigns each data point\nto its closest center, therefore, the cluster assignment is better:\n\n(t+1)\n(t+1)\n(t) (t) (t) (t) (t) (t) cost(C1 , ..., CK , z1 , ..., zK ) ≤ cost(C1 , ..., CK , z1 , ."
+          },
+          "grade": null,
+          "feedback": null
+        },
+        {
+          "id": 819,
+          "question": "A machine learning engineer is working with a dataset where new data points are constantly being added and old ones are removed. Which clustering algorithm is LEAST suitable?",
+          "options": [
+            "K-Means",
+            "Hierarchical Clustering",
+            "Density-Based Clustering (DBSCAN)",
+            "Mini-Batch K-Means"
           ],
           "correctAnswer": 0,
-          "explanation": "The K-Means algorithm aims to minimize the sum of the squared Euclidean distances between each data point and the centroid of the cluster it belongs to. This is explicitly stated in the material as the goal of the algorithm.",
+          "explanation": "K-Means requires recomputation of cluster centers with every change in the dataset, making it less suitable for dynamic datasets. Hierarchical clustering can be updated, but is computationally expensive. DBSCAN and Mini-Batch K-Means are more adaptable to changing data.",
           "source": {
-            "chunkId": 38,
+            "chunkId": 719,
             "fileName": "Clustering.pdf",
-            "chunkText": "Clustering\n\nMIT 15.097 Course Notes Cynthia Rudin and S¸eyda Ertekin\n\nCredit: Dasgupta, Hastie, Tibshirani, Friedman\n\nClustering (a.k.a. data segmentation) Let’s segment a collection of examples into “clusters” so that objects within a cluster are more closely related to one another than objects assigned to different clusters. We want to assign each ex­ ample xi to a cluster k ∈{1, ...., K}.\n\nThe K-Means algorithm is a very popular way to do this. It assumes points lie\nin Euclidean space.\n\nn Input: Finite set {x }m\ni 1=1, xi ∈ R\nOutput: z1, ..., zK cluster centers\n\nGoal: Minimize\n\ncost(z1, ..., zK ) :=\nmin Ixi − zkI2\n\n2. k i The choice of the squared norm is fortuitous, it really helps simplify the math!\n\nn If we’re given points {zk}k, they can induce a Voronoi p artition of R : they break the space into cells where each cell corresponds to one of the zk’s. That is, each cell contains the region of space whose nearest representative is zk.\n\nDraw a picture\n\nWe can look at the examples in each of these regions of space, which are the clusters. Specifically,\n\nCk := {xi : the closest representative to xi is zk}.\n\nLet’s compute the cost another way. Before, we summed over examples, and then picked the right representative zk for each example. This time, we’ll sum over clusters, and look at all the examples in that cluster:\n\ncost(z1, ..., zK ) =\nIxi − zkI2\n\n2.\n\nk {i:xi∈Ck}\n\n1"
+            "chunkText": "hip can change\narbitrarily. A solution is Hierarchical Clustering.\n\n• clusters at the next level of the hierarchy are created by merging clusters at the next lowest level.\n\n– lowest level: each cluster has 1 example\n\n– highest level: there’s only 1 cluster"
           },
           "grade": null,
           "feedback": null
         },
         {
-          "id": 307,
-          "question": "An analyst is running K-Means and observes that some data points are not assigned to their nearest cluster center. What effect does this have on the cost function?",
+          "id": 820,
+          "question": "A data analyst is using K-Means. What does the Voronoi partition induced by the cluster centers represent?",
           "options": [
-            "It decreases the cost function because the algorithm is optimizing globally.",
-            "It increases the cost function because the assignment is suboptimal.",
-            "It has no effect on the cost function as K-Means is robust to such variations.",
-            "It makes the cost function converge faster."
+            "A random division of the data space.",
+            "The boundaries between clusters, where each region contains points closest to its representative center.",
+            "The density of data points in each cluster.",
+            "A visualization of the data's original distribution."
           ],
           "correctAnswer": 1,
-          "explanation": "The material explicitly states that suboptimal partitions, where an example might not be assigned to the nearest representative, will lead to a redefinition of the cost function that considers these non-optimal assignments, implying an increase in cost compared to optimal assignments.",
+          "explanation": "The Voronoi partition divides the data space into cells, where each cell contains the region of space whose nearest representative is the corresponding cluster center. This visually represents the cluster boundaries based on proximity to the centers.",
           "source": {
-            "chunkId": 39,
+            "chunkId": 337,
             "fileName": "Clustering.pdf",
-            "chunkText": "While we’re analyzing, we’ll need to consider suboptimal partitions of the data, where an example might not be assigned to the nearest representative. So we redefine the cost:\n\nX X\n\nk ∥xi −zk∥2 2. (1)\n\ncost(C1, ..., CK; z1, ..., zK) =\n\n{i:xi∈Ck}\n\nLet’s say we only have one cluster to deal with. Call it C. The representative is z. The cost is then:\ncost(C; z) =\n∥xi −z∥2 2.\n\nX\n\n{ ∈} Where should we place z?\n\ni:xi C\n\nAs you probably guessed, we would put it at the mean of the examples in C. But\nalso, the additional cost incurred by picking z = mean(C) can be characterized\nvery simply:\n\n̸\n\nLemma 1. For any set C ⊂Rn and any z ∈Rn,\n\ncost(C; z) = cost(C, mean(C)) + C\nz mean(C) 2 2. | | · ∥− ∥\n\nLet’s go ahead and prove it. In order to do that, we need to do another biasvariance decomposition (this one’s pretty much identical to one of the ones we did before).\n\nLemma 2. Let X Rn be any random variable. For any z Rn, we have: ∈ ∈\n\nEX∥X −z∥2\n2 = EX∥X −EXX∥2\n2 + ∥z −EXX∥2\n2.\n\nProof. Let x¯ := EXX.\n\nj −z(j))2 X\n\nEX∥X −z∥2\n2 = EX\n(X(j)\n\nj\n−x¯(j) + x¯(j) −zj)2\nX\n\n= EX\n(X(j)\n\nj\n−x¯(j))2 + EX\n(x¯(j)\n\nj −zj)2 X X\n\n= EX\n(X(j)\n\nj −x¯(j))(x¯(j) −z(j)) X\n\n+2EX\n(X(j)\n\n= EX∥X −x¯∥2\n2 + EX∥x¯ −z∥2\n2 + 0. ■\n\n2"
+            "chunkText": "e K-Means algorithm is a very popular way to do this. It assumes points lie\nin Euclidean space.\n\nn Input: Finite set {x }m\ni 1=1, xi ∈ R\nOutput: z1, ..., zK cluster centers\n\nGoal: Minimize\n\ncost(z1, ..., zK ) :=\nmin Ixi − zkI2\n\n2. k i The choice of the squared norm is fortuitous, it really helps simplify the math!\n\nn If we’re given points {zk}k, they can induce a Voronoi p artition of R : they break the space into cells where each cell corresponds to one of the zk’s. That is, each cell contains the region of space whose nearest representative is zk.\n\nDraw a picture\n\nWe can look at the examples in each of these regions of space, which are the clusters. Specifically,\n\nCk := {xi : the closest representative to xi is zk}.\n\nLet’s compute the cost another way. Before, we summed over examples, and then picked the right representative zk for each example. This time, we’ll sum over clusters, and look at all the examples in that cluster:\n\ncost(z1, ..., zK ) =\nIxi − zkI2\n\n2.\n\nk {i:xi∈Ck}\n\n1"
           },
           "grade": null,
           "feedback": null
         },
         {
-          "id": 308,
-          "question": "A researcher is working with a single cluster 'C' and wants to find the optimal location 'z' to minimize the cost function. According to Lemma 1, where should they place 'z'?",
+          "id": 821,
+          "question": "A data scientist is trying to minimize the cost function in K-Means. Which distance metric is primarily used and simplifies the math?",
           "options": [
-            "At a randomly chosen point within the cluster.",
-            "At the median of the data points in cluster C.",
-            "At the mean of the data points in cluster C.",
-            "At the point farthest from all other points in cluster C."
+            "Manhattan distance",
+            "Euclidean distance (squared norm)",
+            "Cosine similarity",
+            "Hamming distance"
           ],
-          "correctAnswer": 2,
-          "explanation": "Lemma 1 states that the optimal location to minimize the cost function for a single cluster is at the mean of the examples in that cluster. Placing 'z' at the mean minimizes the cost.",
+          "correctAnswer": 1,
+          "explanation": "K-Means primarily uses the squared Euclidean distance (squared norm) to calculate the distance between data points and cluster centers. This choice simplifies the mathematical calculations involved in minimizing the cost function.",
           "source": {
-            "chunkId": 39,
+            "chunkId": 337,
             "fileName": "Clustering.pdf",
-            "chunkText": "While we’re analyzing, we’ll need to consider suboptimal partitions of the data, where an example might not be assigned to the nearest representative. So we redefine the cost:\n\nX X\n\nk ∥xi −zk∥2 2. (1)\n\ncost(C1, ..., CK; z1, ..., zK) =\n\n{i:xi∈Ck}\n\nLet’s say we only have one cluster to deal with. Call it C. The representative is z. The cost is then:\ncost(C; z) =\n∥xi −z∥2 2.\n\nX\n\n{ ∈} Where should we place z?\n\ni:xi C\n\nAs you probably guessed, we would put it at the mean of the examples in C. But\nalso, the additional cost incurred by picking z = mean(C) can be characterized\nvery simply:\n\n̸\n\nLemma 1. For any set C ⊂Rn and any z ∈Rn,\n\ncost(C; z) = cost(C, mean(C)) + C\nz mean(C) 2 2. | | · ∥− ∥\n\nLet’s go ahead and prove it. In order to do that, we need to do another biasvariance decomposition (this one’s pretty much identical to one of the ones we did before).\n\nLemma 2. Let X Rn be any random variable. For any z Rn, we have: ∈ ∈\n\nEX∥X −z∥2\n2 = EX∥X −EXX∥2\n2 + ∥z −EXX∥2\n2.\n\nProof. Let x¯ := EXX.\n\nj −z(j))2 X\n\nEX∥X −z∥2\n2 = EX\n(X(j)\n\nj\n−x¯(j) + x¯(j) −zj)2\nX\n\n= EX\n(X(j)\n\nj\n−x¯(j))2 + EX\n(x¯(j)\n\nj −zj)2 X X\n\n= EX\n(X(j)\n\nj −x¯(j))(x¯(j) −z(j)) X\n\n+2EX\n(X(j)\n\n= EX∥X −x¯∥2\n2 + EX∥x¯ −z∥2\n2 + 0. ■\n\n2"
+            "chunkText": "e K-Means algorithm is a very popular way to do this. It assumes points lie\nin Euclidean space.\n\nn Input: Finite set {x }m\ni 1=1, xi ∈ R\nOutput: z1, ..., zK cluster centers\n\nGoal: Minimize\n\ncost(z1, ..., zK ) :=\nmin Ixi − zkI2\n\n2. k i The choice of the squared norm is fortuitous, it really helps simplify the math!\n\nn If we’re given points {zk}k, they can induce a Voronoi p artition of R : they break the space into cells where each cell corresponds to one of the zk’s. That is, each cell contains the region of space whose nearest representative is zk.\n\nDraw a picture\n\nWe can look at the examples in each of these regions of space, which are the clusters. Specifically,\n\nCk := {xi : the closest representative to xi is zk}.\n\nLet’s compute the cost another way. Before, we summed over examples, and then picked the right representative zk for each example. This time, we’ll sum over clusters, and look at all the examples in that cluster:\n\ncost(z1, ..., zK ) =\nIxi − zkI2\n\n2.\n\nk {i:xi∈Ck}\n\n1"
           },
           "grade": null,
           "feedback": null
         },
         {
-          "id": 309,
-          "question": "A data scientist is trying to determine the absolute best clustering of 20 data points into 4 clusters. What is the primary challenge they will face?",
+          "id": 822,
+          "question": "A researcher is using K-Means and wants to evaluate the 'goodness' of the clusters. Which of the following is NOT a cluster validity measure?",
           "options": [
-            "The K-Means algorithm is not guaranteed to converge.",
-            "Calculating the mean of each cluster is computationally expensive.",
-            "The number of possible assignments grows extremely rapidly, making an exhaustive search infeasible.",
-            "The cost function is non-convex, making optimization difficult."
-          ],
-          "correctAnswer": 2,
-          "explanation": "The material explicitly mentions that the number of distinct assignments of m data points to K clusters grows factorially, making it computationally infeasible to try all possible assignments, even for relatively small values of m and K.",
-          "source": {
-            "chunkId": 40,
-            "fileName": "Clustering.pdf",
-            "chunkText": "To prove Lemma 1, pick a specific choice for X, namely X is a uniform random draw from the points xi in set C. So X has a discrete distribution. What will happen with this choice of X is that the expectation will reduce to the cost we already defined above.\n\nX\n\nEX∥X −z∥2\n2 =\n(prob. that point i is chosen)∥xi −z∥2 2 i:xi C\n\n{ ∈} X 1\n=\n\n{i:xi∈C} |C ∥x | i −z∥2 1\n2 =\ncost(C, z) |C| (2)\n\nand if we use Lemma 2 substituting z to be x¯ (a.k.a., EXX, or mean(C)) and simplify as in (2):\n\n1 EX∥X −x¯∥2\n2 =\ncost(C, mean(C)). C | | (3)\n\nWe had already defined cost earlier, and the choice of X was nice because its expectation is just the cost. Let’s recopy Lemma 2’s statement here, using the x¯ notation:\n\nEX∥X −z∥2\n2 = EX∥X −x¯∥2\n2 + ∥z −x¯∥2\n2.\n\nPlugging in (2) and (3),\n\n1 1\ncost(C, z) =\ncost(C, mean(C)) +\n|C| |C ∥z −x¯∥2 | 2. (4)\n\nMultiplying through,\n\ncost(C; z) = cost(C, mean(C)) + |C| · ∥z −mean(C)∥2\n2.\n\nAnd that’s the statement of Lemma 1. ■\n\nTo really minimize the cost (1), you’d need to try all possible assignments of the m data points to K clusters. Uck! The number of distinct assignments is (Jain and Dubes 1988):\n\nK 1\nS(m, K) =\n(\nK! k=1\n−1)K−k K km k\n\nX\n\nS(10, 4) = 34K, S(19, 4)\n1010, ... so not doable. ≈\n\nLet’s try some heuristic gradient-descent-ish method instead.\n\n3"
-          },
-          "grade": null,
-          "feedback": null
-        },
-        {
-          "id": 310,
-          "question": "During the K-Means algorithm, what happens to the cost function with each iteration?",
-          "options": [
-            "It oscillates randomly.",
-            "It monotonically increases.",
-            "It remains constant.",
-            "It monotonically decreases."
+            "Davies-Baldwin Index",
+            "Dunn Index",
+            "Sum of Squared Errors (SSE)",
+            "Receiver Operating Characteristic (ROC) AUC"
           ],
           "correctAnswer": 3,
-          "explanation": "Lemma 3 states that during the course of the K-Means algorithm, the cost monotonically decreases. This is because each step either assigns points to closer centers or re-centers the clusters at their means, both of which reduce the cost.",
+          "explanation": "Davies-Baldwin Index, Dunn Index, and Sum of Squared Errors (SSE) are all cluster validity measures used to evaluate the quality of clustering results. ROC AUC is used to evaluate the performance of classification models, not clustering.",
           "source": {
-            "chunkId": 41,
+            "chunkId": 190,
             "fileName": "Clustering.pdf",
-            "chunkText": "The K-Means Algorithm\n\nChoose the value of K before you start.\n\nn Initialize centers z1, ..., zK ∈ R and clusters C1, ..., CK in any way. Repeat until there is no further change in cost: for each k: Ck ←{xi : the closest representative is zk}\nfor each k: zk = mean(Ck)\n\nThis is simple enough, and takes O(Km) time per iteration.\n\nPPT demo\n\nOf course, it doesn’t always converge to the optimal solution.\n\nBut does the cost converge?\n\nLemma 3. During the course of the K-Means algorithm, the cost monotonically\ndecreases.\n\n(t) (t) (t) (t) Proof. Let z1 , ..., zK , C1 , ..., CK denote the centers and clusters at the start of\nthe tth iterate of K-Means. The first step of the iteration assigns each data point\nto its closest center, therefore, the cluster assignment is better:\n\n(t+1)\n(t+1)\n(t) (t) (t) (t) (t) (t) cost(C1 , ..., CK , z1 , ..., zK ) ≤ cost(C1 , ..., CK , z1 , ..., zK ).\n\nOn the second step, each cluster is re-centered at its mean, so the representatives\nare better. By Lemma 1,\n\n(t+1)\n(t+1)\n(t+1)\n(t+1)\n(t+1)\n(t+1)\n(t) (t) cost(C1 , ..., CK , z1 , ..., zK ) ≤ cost(C1 , ..., CK , z1 , ..., zK ).\n\n•\n\nSo does the cost converge?\n\n4"
+            "chunkText": "Example of how K-Means could converge to the wrong thing\n\nHow might you make K-Means more likely to converge to the optimal?\n\nHow might you choose K? (Why can’t you measure test error?)\n\nOther ways to evaluate clusters (“cluster validation”)\n\nThere are loads of cluster validity measures, alternatives to the cost. Draw a picture\n\n• Davies-Baldwin Index - looks at average intracluster distance (within-cluster\ndistance) to the centroid (want it to be small), and intercluster distances between centroids (want i"
           },
           "grade": null,
           "feedback": null
         },
         {
-          "id": 311,
-          "question": "An engineer is using K-Means for a project. After running the algorithm multiple times with different initializations, they notice that the results vary significantly. What is the most likely reason for this?",
+          "id": 823,
+          "question": "A data scientist is using K-Means. What is the main goal of the algorithm?",
           "options": [
-            "The dataset is too small.",
-            "The K-Means algorithm always converges to the global optimum.",
-            "The K-Means algorithm is sensitive to initial centroid positions and can converge to a local optimum.",
-            "The learning rate is too high."
+            "Maximize the distance between data points.",
+            "Minimize the distance between data points.",
+            "Minimize the sum of squared distances between data points and their cluster centers.",
+            "Maximize the sum of squared distances between data points and their cluster centers."
           ],
           "correctAnswer": 2,
-          "explanation": "The material mentions that K-Means doesn't always converge to the optimal solution. This implies that it can get stuck in local optima, and the final result depends on the initial starting positions of the centroids.",
+          "explanation": "The primary goal of the K-Means algorithm is to minimize the cost function, which is the sum of the squared distances between each data point and its assigned cluster center. This aims to create compact and well-separated clusters.",
           "source": {
-            "chunkId": 41,
+            "chunkId": 337,
             "fileName": "Clustering.pdf",
-            "chunkText": "The K-Means Algorithm\n\nChoose the value of K before you start.\n\nn Initialize centers z1, ..., zK ∈ R and clusters C1, ..., CK in any way. Repeat until there is no further change in cost: for each k: Ck ←{xi : the closest representative is zk}\nfor each k: zk = mean(Ck)\n\nThis is simple enough, and takes O(Km) time per iteration.\n\nPPT demo\n\nOf course, it doesn’t always converge to the optimal solution.\n\nBut does the cost converge?\n\nLemma 3. During the course of the K-Means algorithm, the cost monotonically\ndecreases.\n\n(t) (t) (t) (t) Proof. Let z1 , ..., zK , C1 , ..., CK denote the centers and clusters at the start of\nthe tth iterate of K-Means. The first step of the iteration assigns each data point\nto its closest center, therefore, the cluster assignment is better:\n\n(t+1)\n(t+1)\n(t) (t) (t) (t) (t) (t) cost(C1 , ..., CK , z1 , ..., zK ) ≤ cost(C1 , ..., CK , z1 , ..., zK ).\n\nOn the second step, each cluster is re-centered at its mean, so the representatives\nare better. By Lemma 1,\n\n(t+1)\n(t+1)\n(t+1)\n(t+1)\n(t+1)\n(t+1)\n(t) (t) cost(C1 , ..., CK , z1 , ..., zK ) ≤ cost(C1 , ..., CK , z1 , ..., zK ).\n\n•\n\nSo does the cost converge?\n\n4"
+            "chunkText": "e K-Means algorithm is a very popular way to do this. It assumes points lie\nin Euclidean space.\n\nn Input: Finite set {x }m\ni 1=1, xi ∈ R\nOutput: z1, ..., zK cluster centers\n\nGoal: Minimize\n\ncost(z1, ..., zK ) :=\nmin Ixi − zkI2\n\n2. k i The choice of the squared norm is fortuitous, it really helps simplify the math!\n\nn If we’re given points {zk}k, they can induce a Voronoi p artition of R : they break the space into cells where each cell corresponds to one of the zk’s. That is, each cell contains the region of space whose nearest representative is zk.\n\nDraw a picture\n\nWe can look at the examples in each of these regions of space, which are the clusters. Specifically,\n\nCk := {xi : the closest representative to xi is zk}.\n\nLet’s compute the cost another way. Before, we summed over examples, and then picked the right representative zk for each example. This time, we’ll sum over clusters, and look at all the examples in that cluster:\n\ncost(z1, ..., zK ) =\nIxi − zkI2\n\n2.\n\nk {i:xi∈Ck}\n\n1"
           },
           "grade": null,
           "feedback": null
         },
         {
-          "id": 312,
-          "question": "A biologist is using K-Means to cluster microarray data of patients with different types of cancer. After obtaining the clusters, how can they validate the quality of the clusters?",
+          "id": 824,
+          "question": "A data analyst is using K-Means. If a data point is assigned to cluster Ck, what does this imply?",
           "options": [
-            "By measuring the test error of a predictive model trained on the clusters.",
-            "By using cluster validity measures like the Davies-Baldwin Index or Dunn Index.",
-            "By visually inspecting the cluster centers.",
-            "By increasing the number of clusters until the cost function reaches zero."
+            "The data point is randomly assigned.",
+            "The data point is closest to the center zk compared to other cluster centers.",
+            "The data point is farthest from the center zk.",
+            "The data point has missing values."
           ],
           "correctAnswer": 1,
-          "explanation": "The material suggests using cluster validity measures like the Davies-Baldwin Index and Dunn Index as alternatives to the cost function for evaluating clusters. These indices assess the quality of the clusters based on intracluster and intercluster distances.",
+          "explanation": "When a data point is assigned to cluster Ck, it means that among all the cluster centers (z1, z2, ..., zK), the data point is closest to the center zk. This is the core principle of K-Means assignment.",
           "source": {
-            "chunkId": 42,
+            "chunkId": 342,
             "fileName": "Clustering.pdf",
-            "chunkText": "Example of how K-Means could converge to the wrong thing\n\nHow might you make K-Means more likely to converge to the optimal?\n\nHow might you choose K? (Why can’t you measure test error?)\n\nOther ways to evaluate clusters (“cluster validation”)\n\nThere are loads of cluster validity measures, alternatives to the cost. Draw a picture\n\n• Davies-Baldwin Index - looks at average intracluster distance (within-cluster\ndistance) to the centroid (want it to be small), and intercluster distances between centroids (want it to be large).\n\n• Dunn Index - looks pairwise at minimal intercluster distance (want it to be\nlarge) and maximal intracluster distance (want it to be small).\n\nExample: Microarray data. Have 6830 genes (rows) and 64 patients (columns). The color of each box is a measurement of the expression level of a gene. The expression level of a gene is basically how much of its special protein it is pro­ ducing. The physical chip itself doesn’t actually measure protein levels, but a proxy for them (which is RNA, which sticks to the DNA on the chip). If the color is green, it means low expression levels, if the color is red, it means higher expression levels. Each patient is represented by a vector, which is the expression level of their genes. It’s a column vector with values given in color:\n\n5"
+            "chunkText": "The K-Means Algorithm\n\nChoose the value of K before you start.\n\nn Initialize centers z1, ..., zK ∈ R and clusters C1, ..., CK in any way. Repeat until there is no further change in cost: for each k: Ck ←{xi : the closest representative is zk}\nfor each k: zk = mean(Ck)\n\nThis is simple enough, and takes O(Km) time per iteration.\n\nPPT demo\n\nOf course, it doesn’t always converge to the optimal solution.\n\nBut does the cost converge?\n\nLemma 3. During the course of the K-Means algorithm, the cost monotonically\ndecreases.\n\n(t) (t) (t) (t) Proof. Let z1 , ..., zK , C1 , ..., CK denote the centers and clusters at the start of\nthe tth iterate of K-Means. The first step of the iteration assigns each data point\nto its closest center, therefore, the cluster assignment is better:\n\n(t+1)\n(t+1)\n(t) (t) (t) (t) (t) (t) cost(C1 , ..., CK , z1 , ..., zK ) ≤ cost(C1 , ..., CK , z1 , ."
           },
           "grade": null,
           "feedback": null
         },
         {
-          "id": 313,
-          "question": "A software developer is implementing K-NN for a classification task. What is a key difference between K-NN and K-Means?",
+          "id": 825,
+          "question": "A data scientist is using K-Means. What is a potential drawback of using only the cost function to evaluate the clustering result?",
           "options": [
-            "K-NN requires explicit training, while K-Means does not.",
-            "K-Means is used for classification, while K-NN is used for clustering.",
-            "K-NN does not explicitly compute decision boundaries, while K-Means defines cluster centers.",
-            "K-Means can only be used for regression, while K-NN can only be used for classification."
+            "The cost function is always zero.",
+            "The cost function is difficult to calculate.",
+            "The cost function doesn't provide information about the shape of the clusters.",
+            "The cost function might not reflect the true underlying structure of the data."
           ],
-          "correctAnswer": 2,
-          "explanation": "K-NN is a lazy learning algorithm that doesn't explicitly compute decision boundaries. Instead, it classifies new instances based on the majority class among its k nearest neighbors in the training data. K-Means, on the other hand, defines cluster centers and assigns data points to the nearest cluster.",
+          "correctAnswer": 3,
+          "explanation": "While the cost function measures the compactness of clusters, it doesn't guarantee that the clusters are meaningful or reflect the true underlying structure of the data. Other cluster validity measures are needed to assess the quality of the clustering beyond just minimizing the cost.",
           "source": {
-            "chunkId": 48,
-            "fileName": "k-nearest neighbpurs.pdf",
-            "chunkText": "K-Nearest Neighbors\n\n• Classify using the majority vote of the k closest training points\n\nX X X\n\n(a) 1-nearest neighbor\n(b) 2-nearest neighbor\n(c) 3-nearest neighbor\n\nK-Nearest Neighbors\n\n• K-NN algorithm does not explicitly compute decision\nboundaries. The boundaries between distinct classes form a subset of the Voronoi diagram of the training data.\n\nEach line segment is equidistant to neighboring points.\n\n2"
-          },
-          "grade": null,
-          "feedback": null
-        },
-        {
-          "id": 314,
-          "question": "An engineer is using K-NN for a regression problem. How does K-NN determine the value for a new test example?",
-          "options": [
-            "By assigning the test example to the closest cluster center.",
-            "By taking the median of the values of the K nearest neighbors.",
-            "By taking the (weighted) average of the values of the K nearest neighbors.",
-            "By randomly selecting a value from one of the K nearest neighbors."
-          ],
-          "correctAnswer": 2,
-          "explanation": "For regression, K-NN predicts the value for a new test example by calculating the (weighted) average of the values of its K nearest neighbors in the training data. This averaging smooths out the predictions and reduces the impact of individual noisy neighbors.",
-          "source": {
-            "chunkId": 49,
-            "fileName": "k-nearest neighbpurs.pdf",
-            "chunkText": "K-Nearest Neighbors\n\n• For regression: the value for the test eXample becomes the (weighted) average of the values of the K neighbors.\n\nMaking K-NN More Powerful\n\n• A good value for K can be determined by considering a range of K values.\n\n– K too small: we’ll model the noise\n\n– K too large: neighbors include too many points from other classes\n\n• There are problems when there is a spread of distances among the K­\nNN. Use a distance-based voting scheme, where closer neighbors have\nmore influence.\n\n• The distance measure has to be meaningful – attributes should be scaled\n\n– Eg. Income varies 10,000-1,000,000 while height varies 1.5-1.8 meters\n\n3"
-          },
-          "grade": null,
-          "feedback": null
-        },
-        {
-          "id": 315,
-          "question": "A data scientist is tuning the 'K' parameter in K-NN. What is a potential consequence of choosing a very small value for 'K'?",
-          "options": [
-            "The model will underfit the data.",
-            "The model will be more robust to noise.",
-            "The model will model the noise in the data.",
-            "The model will include too many points from other classes."
-          ],
-          "correctAnswer": 2,
-          "explanation": "If K is too small, the K-NN model will be highly sensitive to the noise in the training data. Each prediction will be based on very few neighbors, and any noise or outliers among those neighbors will have a disproportionate impact on the result.",
-          "source": {
-            "chunkId": 49,
-            "fileName": "k-nearest neighbpurs.pdf",
-            "chunkText": "K-Nearest Neighbors\n\n• For regression: the value for the test eXample becomes the (weighted) average of the values of the K neighbors.\n\nMaking K-NN More Powerful\n\n• A good value for K can be determined by considering a range of K values.\n\n– K too small: we’ll model the noise\n\n– K too large: neighbors include too many points from other classes\n\n• There are problems when there is a spread of distances among the K­\nNN. Use a distance-based voting scheme, where closer neighbors have\nmore influence.\n\n• The distance measure has to be meaningful – attributes should be scaled\n\n– Eg. Income varies 10,000-1,000,000 while height varies 1.5-1.8 meters\n\n3"
+            "chunkId": 190,
+            "fileName": "Clustering.pdf",
+            "chunkText": "Example of how K-Means could converge to the wrong thing\n\nHow might you make K-Means more likely to converge to the optimal?\n\nHow might you choose K? (Why can’t you measure test error?)\n\nOther ways to evaluate clusters (“cluster validation”)\n\nThere are loads of cluster validity measures, alternatives to the cost. Draw a picture\n\n• Davies-Baldwin Index - looks at average intracluster distance (within-cluster\ndistance) to the centroid (want it to be small), and intercluster distances between centroids (want i"
           },
           "grade": null,
           "feedback": null
         }
       ]
     },
-    "num_questions_requested": 10,
-    "num_questions_generated": 10,
-    "latency": 35.27,
+    "num_questions_requested": 15,
+    "num_questions_generated": 15,
+    "latency": 35.17,
+    "error": null
+  },
+  {
+    "config_label": "quiz_prompt_quiz_scenario",
+    "test_type": "full_course",
+    "topic": null,
+    "quiz_data": {
+      "quizId": 67,
+      "courseId": 11,
+      "materialIds": [],
+      "section": null,
+      "quizTitle": "Decision Tree Fundamentals Quiz",
+      "questions": [
+        {
+          "id": 826,
+          "question": "A data scientist is building a decision tree. Based on the materials, what is the best approach to determine which attribute to split at each node?",
+          "options": [
+            "Look at node impurity.",
+            "Randomly select an attribute.",
+            "Choose the attribute with the most missing values.",
+            "Select the attribute that results in the largest tree."
+          ],
+          "correctAnswer": 0,
+          "explanation": "The best approach is to look at node impurity to determine which attribute to split. This helps to create the most informative splits. Random selection, missing values, or tree size are not reliable indicators of split quality.",
+          "source": {
+            "chunkId": 224,
+            "fileName": "Decision trees.pdf",
+            "chunkText": "-section risk, etc.\n\nHow to build a decision tree:\n\n• Start at the top of the tree.\n\n• Grow it by “splitting” attributes one by one. To determine which attribute to split, look at “node impurity.”\n\n• Assign leaf nodes the majority vote in the leaf.\n\n• When we get to the bottom, prune the tree to prevent overfitting\n\nWhy is this a good way to build a tree?\n\n1"
+          },
+          "grade": null,
+          "feedback": null
+        },
+        {
+          "id": 827,
+          "question": "An analyst is creating a decision tree for loan default prediction. Based on the materials, what is the primary goal when pruning the tree?",
+          "options": [
+            "To increase the tree's complexity.",
+            "To prevent overfitting.",
+            "To ensure all attributes are used.",
+            "To maximize training accuracy at all costs."
+          ],
+          "correctAnswer": 1,
+          "explanation": "The primary goal of pruning is to prevent overfitting, which occurs when the tree is too complex and fits the training data too closely, leading to poor performance on new data. Increasing complexity or using all attributes can lead to overfitting, and maximizing training accuracy without considering generalization is not ideal.",
+          "source": {
+            "chunkId": 224,
+            "fileName": "Decision trees.pdf",
+            "chunkText": "-section risk, etc.\n\nHow to build a decision tree:\n\n• Start at the top of the tree.\n\n• Grow it by “splitting” attributes one by one. To determine which attribute to split, look at “node impurity.”\n\n• Assign leaf nodes the majority vote in the leaf.\n\n• When we get to the bottom, prune the tree to prevent overfitting\n\nWhy is this a good way to build a tree?\n\n1"
+          },
+          "grade": null,
+          "feedback": null
+        },
+        {
+          "id": 828,
+          "question": "A machine learning engineer is deciding between C4.5 and CART algorithms for building a decision tree. Based on the materials, what is a key difference between these two algorithms?",
+          "options": [
+            "C4.5 uses the Gini index, while CART uses information gain.",
+            "C4.5 only allows binary splits, while CART allows multi-way splits.",
+            "C4.5 uses information gain for splitting, and CART uses the Gini index.",
+            "C4.5 is a generative model, while CART is a discriminative model."
+          ],
+          "correctAnswer": 2,
+          "explanation": "C4.5 uses information gain for splitting, while CART uses the Gini index. CART only has binary splits. The other options are incorrect regarding the algorithms' characteristics.",
+          "source": {
+            "chunkId": 245,
+            "fileName": "Decision trees.pdf",
+            "chunkText": "Gin\n\nf p bet\n\nclassifica\n\ny,\n\nrop\n\ntion error for values o\n\nent\n\nof\n\nGra ph\n\ni i nde x, and mi s\n\nween 0 and 1\n\n.\n\nLearning, Springer, 2009.\n\nC4.5 uses information gain for splitting, and CART uses the Gini index. (CART only has binary splits.)\n\nPruning Let’s start with C4.5’s pruning. C4.5 recursively makes choices as to whether to prune on an attribute:\n\n• Option 1: leaving the tree as is\n\n• Option 2: replace that part of the tree with a leaf corresponding to the most frequent label in the data S going to"
+          },
+          "grade": null,
+          "feedback": null
+        },
+        {
+          "id": 829,
+          "question": "A data scientist has built a decision tree and wants to evaluate its performance on unseen data. Based on the materials, what is the best approach to estimate the out-of-sample error?",
+          "options": [
+            "Use the training data to evaluate the tree.",
+            "Calculate the error on the data used for pruning.",
+            "Compute f(x) and compare it to y using a loss function on a separate test dataset.",
+            "Assume the out-of-sample error is always zero."
+          ],
+          "correctAnswer": 2,
+          "explanation": "The best approach is to compute f(x) and compare it to y using a loss function on a separate test dataset. This provides an unbiased estimate of how well the tree will perform on new, unseen data. Using the training data or assuming zero error will lead to an overly optimistic and inaccurate assessment.",
+          "source": {
+            "chunkId": 147,
+            "fileName": "Fundamentals of Learning.pdf",
+            "chunkText": "upervised learning\n\nTraining: training data are input, and model f is the output.\n\ni=1 =⇒ Algorithm =⇒ f.\n\n{(xi, yi)}m\n\nTesting: You want to predict y for a new x, where (x, y) comes from the same distribution as {(xi, yi)}m\n\ni=1.\n\nThat is, (x, y) ∼ D(X , Y) and each (xi, yi) ∼ D(X , Y).\n\nCompute f(x) and compare it to y. How well does f(x) match y? Measure goodness of f using a loss function R : Y × Y → R:\n\nRtest(f) = E(x,y)∼DR(f(x), y)\n\n=\nR(f(x), y)dD(x, y). (x,y)∼D\n\n2"
+          },
+          "grade": null,
+          "feedback": null
+        },
+        {
+          "id": 830,
+          "question": "An analyst is using C4.5 pruning and has three options: leaving the tree as is, replacing a subtree with a leaf, or replacing it with a subtree. Based on the materials, how does C4.5 decide which option to choose?",
+          "options": [
+            "It randomly selects one of the options.",
+            "It chooses the option with the highest training accuracy.",
+            "It computes upper bounds on the probability of error for each option and chooses the one with the lowest upper bound.",
+            "It always leaves the tree as is."
+          ],
+          "correctAnswer": 2,
+          "explanation": "C4.5 computes upper bounds on the probability of error for each option and chooses the one with the lowest upper bound. This helps to minimize the expected error on unseen data. Random selection or relying solely on training accuracy are not reliable strategies.",
+          "source": {
+            "chunkId": 246,
+            "fileName": "Decision trees.pdf",
+            "chunkText": "ce that part of the tree with a leaf corresponding to the most frequent label in the data S going to that part of the tree.\n\n• Option 3: replace that part of the tree with one of its subtrees, corresponding to the most common branch in the split\n\nDemo To figure out which decision to make, C4.5 computes upper bounds on the probability of error for each option. I’ll show you how to do that shortly.\n\n• Prob of error for Option 1 ≤UpperBound1\n\n• Prob of error for Option 2 ≤UpperBound2\n\n10"
+          },
+          "grade": null,
+          "feedback": null
+        },
+        {
+          "id": 831,
+          "question": "A machine learning engineer is tuning the cost complexity pruning parameter 'C' in a decision tree. Based on the materials, what is the effect of increasing the value of C?",
+          "options": [
+            "It will result in a more complex tree with better training accuracy.",
+            "It will result in a sparser tree with fewer leaves.",
+            "It will have no effect on the tree structure.",
+            "It will always lead to overfitting."
+          ],
+          "correctAnswer": 1,
+          "explanation": "If C is large, the tree that minimizes the cost will be sparser. If C is small, the tree that minimizes the cost will have better training accuracy. Therefore, increasing C leads to a sparser tree.",
+          "source": {
+            "chunkId": 257,
+            "fileName": "Decision trees.pdf",
+            "chunkText": "xity.”\n\nEach subtree is assigned a cost. The first term in the cost is a misclassification error. The second term is a regularization term. If we choose C to be large, the tree that minimizes the cost will be sparser. If C is small, the tree that minimizes the cost will have better training accuracy.\n\nX\n1[yi=leaf’s class] + C [#leaves in subtree] ."
+          },
+          "grade": null,
+          "feedback": null
+        },
+        {
+          "id": 832,
+          "question": "A data scientist is building a decision tree for a classification problem. Based on the materials, what is the purpose of assigning leaf nodes the majority vote in the leaf?",
+          "options": [
+            "To ensure perfect accuracy on the training data.",
+            "To predict the class label for new instances based on the most frequent class in that leaf.",
+            "To balance the number of instances in each leaf.",
+            "To simplify the tree structure."
+          ],
+          "correctAnswer": 1,
+          "explanation": "Assigning leaf nodes the majority vote in the leaf is done to predict the class label for new instances based on the most frequent class in that leaf. This is a simple and effective way to make predictions. It doesn't guarantee perfect accuracy or balance the number of instances.",
+          "source": {
+            "chunkId": 224,
+            "fileName": "Decision trees.pdf",
+            "chunkText": "-section risk, etc.\n\nHow to build a decision tree:\n\n• Start at the top of the tree.\n\n• Grow it by “splitting” attributes one by one. To determine which attribute to split, look at “node impurity.”\n\n• Assign leaf nodes the majority vote in the leaf.\n\n• When we get to the bottom, prune the tree to prevent overfitting\n\nWhy is this a good way to build a tree?\n\n1"
+          },
+          "grade": null,
+          "feedback": null
+        },
+        {
+          "id": 833,
+          "question": "A machine learning engineer is working with a dataset that has both categorical and numerical features. Based on the materials, which decision tree algorithm is suitable for handling both types of features?",
+          "options": [
+            "Apriori",
+            "K-Nearest Neighbors",
+            "C4.5",
+            "Linear Regression"
+          ],
+          "correctAnswer": 2,
+          "explanation": "C4.5 is a decision tree algorithm that can handle both categorical and numerical features. Apriori is for association rule mining, K-Nearest Neighbors is a distance-based algorithm, and Linear Regression is for predicting continuous values.",
+          "source": {
+            "chunkId": 210,
+            "fileName": "Naïve Bayes.pdf",
+            "chunkText": "s\nover an unknown distribution over X × Y.\n\nNa¨ıve Bayes Generative Model\nEstimate P(X = x|Y = y) and P(Y = y)\nand use Bayes rule to get P(Y = y|X = x)\nDiscriminative Model\nDirectly estimate P(Y = y|X = x)\n\nMost of the top 10 classification algorithms are discriminative (K-NN, CART,\nC4.5, SVM, AdaBoost).\n\nFor Na¨ıve Bayes, we make an assumption that if we know the class label y, then we know the mechanism (the random process) of how x is generated.\n\nNa¨ıve Bayes is great for very high dimensional problems b"
+          },
+          "grade": null,
+          "feedback": null
+        },
+        {
+          "id": 834,
+          "question": "A data analyst is using a decision tree to predict customer churn. Based on the materials, what is the role of 'information gain' in the tree-building process?",
+          "options": [
+            "To measure the complexity of the tree.",
+            "To determine which attribute to split on at each node.",
+            "To calculate the probability of churn.",
+            "To prune the tree after it is built."
+          ],
+          "correctAnswer": 1,
+          "explanation": "Information gain is used to determine which attribute to split on at each node. It measures the expected reduction in entropy due to branching on that attribute. It is not directly related to tree complexity, churn probability, or pruning.",
+          "source": {
+            "chunkId": 236,
+            "fileName": "Decision trees.pdf",
+            "chunkText": "gatives.\n\nThe training probabilities\n\nin branch j are:\n\n#posj #negj ,\n#posj + #negj #posj + #negj\n\n.\n\nThe Information Gain is calculated like this:\n\nGain(S, A) = expected reduction in entropy due to branching on attribute A\n= original\n\nentropy −entropy after branching #pos #neg\n= H\n,\n#pos + #neg #pos + #neg\n\nJ\n\n−\nX #posj + #negj\n#posj #negj H , ."
+          },
+          "grade": null,
+          "feedback": null
+        },
+        {
+          "id": 835,
+          "question": "A data scientist is building a decision tree and notices that it is overfitting the training data. Based on the materials, which of the following techniques can be used to address this issue?",
+          "options": [
+            "Increasing the depth of the tree.",
+            "Removing the pruning step.",
+            "Pruning the tree.",
+            "Using all available features without selection."
+          ],
+          "correctAnswer": 2,
+          "explanation": "Pruning the tree is a technique used to address overfitting. It simplifies the tree by removing branches or nodes that are not contributing significantly to the model's performance on unseen data. Increasing depth or removing pruning would worsen overfitting.",
+          "source": {
+            "chunkId": 224,
+            "fileName": "Decision trees.pdf",
+            "chunkText": "-section risk, etc.\n\nHow to build a decision tree:\n\n• Start at the top of the tree.\n\n• Grow it by “splitting” attributes one by one. To determine which attribute to split, look at “node impurity.”\n\n• Assign leaf nodes the majority vote in the leaf.\n\n• When we get to the bottom, prune the tree to prevent overfitting\n\nWhy is this a good way to build a tree?\n\n1"
+          },
+          "grade": null,
+          "feedback": null
+        },
+        {
+          "id": 836,
+          "question": "A machine learning engineer is comparing different decision tree models. Based on the materials, what is a common metric used to evaluate the goodness of a decision tree?",
+          "options": [
+            "Support",
+            "Confidence",
+            "Loss function",
+            "Itemset"
+          ],
+          "correctAnswer": 3,
+          "explanation": "A loss function is a common metric used to evaluate the goodness of a decision tree. It measures the difference between the predicted and actual values. Support, confidence, and itemset are related to association rule mining, not decision tree evaluation.",
+          "source": {
+            "chunkId": 147,
+            "fileName": "Fundamentals of Learning.pdf",
+            "chunkText": "upervised learning\n\nTraining: training data are input, and model f is the output.\n\ni=1 =⇒ Algorithm =⇒ f.\n\n{(xi, yi)}m\n\nTesting: You want to predict y for a new x, where (x, y) comes from the same distribution as {(xi, yi)}m\n\ni=1.\n\nThat is, (x, y) ∼ D(X , Y) and each (xi, yi) ∼ D(X , Y).\n\nCompute f(x) and compare it to y. How well does f(x) match y? Measure goodness of f using a loss function R : Y × Y → R:\n\nRtest(f) = E(x,y)∼DR(f(x), y)\n\n=\nR(f(x), y)dD(x, y). (x,y)∼D\n\n2"
+          },
+          "grade": null,
+          "feedback": null
+        },
+        {
+          "id": 837,
+          "question": "A data scientist is working with a decision tree and wants to understand the probability of a particular outcome. Based on the materials, how can decision trees be used to estimate probabilities?",
+          "options": [
+            "They cannot estimate probabilities.",
+            "By calculating the frequency of the outcome in the leaf node.",
+            "By using the Gini index.",
+            "By randomly assigning probabilities."
+          ],
+          "correctAnswer": 1,
+          "explanation": "Decision trees can estimate probabilities by calculating the frequency of the outcome in the leaf node. This provides an estimate of the probability of that outcome for instances that fall into that leaf. The Gini index is used for splitting, not probability estimation.",
+          "source": {
+            "chunkId": 146,
+            "fileName": "Fundamentals of Learning.pdf",
+            "chunkText": "1|x) as possible.\n\n• estimate probability of failure, probability to default on loan\n\nRule mining and clustering are unsupervised methods (no ground truth), and classification, ranking, and density estimation are supervised methods (there is ground truth). In all of these problems, we do not assume we know the distribution that the data are drawn from!\n\nTraining and Testing (in-sample and out-of-sample) for supervised learning\n\nTraining: training data are input, and model f is the output.\n\ni=1 =⇒ Algorithm "
+          },
+          "grade": null,
+          "feedback": null
+        },
+        {
+          "id": 838,
+          "question": "An analyst is using the Apriori algorithm and wants to use rules within ML to get good predictive models. Based on the materials, is this a common application of Apriori?",
+          "options": [
+            "Yes, Apriori is primarily used for predictive modeling.",
+            "No, Apriori is primarily used for finding frequent itemsets and association rules.",
+            "Apriori is not related to machine learning.",
+            "Apriori can only be used for regression problems."
+          ],
+          "correctAnswer": 1,
+          "explanation": "Apriori is primarily used for finding frequent itemsets and association rules, not for predictive modeling directly. While rules derived from Apriori can be used in conjunction with other ML techniques, its main purpose is association rule mining.",
+          "source": {
+            "chunkId": 90,
+            "fileName": "Rule Mining and the Apriori Algorithm.pdf",
+            "chunkText": "\n• mining more than just itemsets (e.g, sequences, trees, graphs)\n\n• incorporating taxonomy in items\n\n• boolean logic and “logical analysis of data”\n\n• Cynthia’s questions: Can we use rules within ML to get good predictive models?\n\n5"
+          },
+          "grade": null,
+          "feedback": null
+        },
+        {
+          "id": 839,
+          "question": "A machine learning engineer is working with a dataset and considering different classification algorithms. Based on the materials, which of the following algorithms is a discriminative model?",
+          "options": [
+            "Naïve Bayes",
+            "Linear Regression",
+            "K-Nearest Neighbors",
+            "Generative Model"
+          ],
+          "correctAnswer": 2,
+          "explanation": "K-Nearest Neighbors is a discriminative model. Naïve Bayes is a generative model. Discriminative models directly estimate P(Y = y|X = x), while generative models estimate P(X = x|Y = y) and P(Y = y).",
+          "source": {
+            "chunkId": 210,
+            "fileName": "Naïve Bayes.pdf",
+            "chunkText": "s\nover an unknown distribution over X × Y.\n\nNa¨ıve Bayes Generative Model\nEstimate P(X = x|Y = y) and P(Y = y)\nand use Bayes rule to get P(Y = y|X = x)\nDiscriminative Model\nDirectly estimate P(Y = y|X = x)\n\nMost of the top 10 classification algorithms are discriminative (K-NN, CART,\nC4.5, SVM, AdaBoost).\n\nFor Na¨ıve Bayes, we make an assumption that if we know the class label y, then we know the mechanism (the random process) of how x is generated.\n\nNa¨ıve Bayes is great for very high dimensional problems b"
+          },
+          "grade": null,
+          "feedback": null
+        },
+        {
+          "id": 840,
+          "question": "A data scientist is building a decision tree and needs to handle missing values in the dataset. Based on the materials, what is a common strategy for dealing with missing values during the tree-building process?",
+          "options": [
+            "Ignore instances with missing values.",
+            "Impute missing values with the mean or median.",
+            "Create separate branches for missing values.",
+            "All of the above are valid strategies."
+          ],
+          "correctAnswer": 3,
+          "explanation": "All of the options are valid strategies for dealing with missing values. Ignoring instances, imputing values, or creating separate branches are all common techniques used in practice. The best approach depends on the specific dataset and the nature of the missing values.",
+          "source": {
+            "chunkId": 224,
+            "fileName": "Decision trees.pdf",
+            "chunkText": "-section risk, etc.\n\nHow to build a decision tree:\n\n• Start at the top of the tree.\n\n• Grow it by “splitting” attributes one by one. To determine which attribute to split, look at “node impurity.”\n\n• Assign leaf nodes the majority vote in the leaf.\n\n• When we get to the bottom, prune the tree to prevent overfitting\n\nWhy is this a good way to build a tree?\n\n1"
+          },
+          "grade": null,
+          "feedback": null
+        }
+      ]
+    },
+    "num_questions_requested": 15,
+    "num_questions_generated": 15,
+    "latency": 36.79,
+    "error": null
+  },
+  {
+    "config_label": "quiz_prompt_quiz_scenario",
+    "test_type": "topic",
+    "topic": "decision trees",
+    "quiz_data": {
+      "quizId": 68,
+      "courseId": 11,
+      "materialIds": [],
+      "section": null,
+      "quizTitle": "Decision Tree Fundamentals Quiz",
+      "questions": [
+        {
+          "id": 841,
+          "question": "A data scientist is building a decision tree to predict customer churn. They have training data and want to use the model to predict churn for a new set of customers. What function should they use?",
+          "options": [
+            "train",
+            "predict",
+            "fit",
+            "evaluate"
+          ],
+          "correctAnswer": 1,
+          "explanation": "The `predict` function is used to generate predictions from a trained model using test data. `train` and `fit` are used for model building, and `evaluate` assesses model performance.",
+          "source": {
+            "chunkId": 131,
+            "fileName": "R for ML.pdf",
+            "chunkText": "4.1 Prediction\n\nFor most of the following algorithms (as well as linear regression), we would in practice first generate the model using training data, and then predict values for test data. To make predictions, we use the predict function. To see documentation, go to the help page for the algorithm, and then scroll through the Contents menu on the left side to find the corresponding predict function. Or simply type ?"
+          },
+          "grade": null,
+          "feedback": null
+        },
+        {
+          "id": 842,
+          "question": "A hospital administrator wants to predict the risk of C-section for pregnant patients. Which of the following algorithms would be most suitable if interpretability is a key concern?",
+          "options": [
+            "Neural Network",
+            "Support Vector Machine",
+            "Decision Tree",
+            "Random Forest"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Decision trees are known for their interpretability, mimicking how a doctor might think. Neural Networks, SVMs and Random Forests are often 'black boxes' and harder to interpret.",
+          "source": {
+            "chunkId": 222,
+            "fileName": "Decision trees.pdf",
+            "chunkText": "Decision Trees\n\nMIT 15.097 Course Notes Cynthia Rudin\n\nCredit: Russell & Norvig, Mitchell, Kohavi & Quinlan, Carter, Vanden Berghen\n\nWhy trees?\n\n• interpretable/intuitive, popular in medical applications because they mimic\nthe way a doctor thinks\n\n• model discrete outcomes nicely\n\n• can be very powerful, can be as complex as you need them\n\n• C4.5 and CART - from “top 10” - decision trees are very popular\n\nSome real examples (from Russell & Norvig, Mitchell)\n\n• BP’s GasOIL system for separating gas and oil o"
+          },
+          "grade": null,
+          "feedback": null
+        },
+        {
+          "id": 843,
+          "question": "An analyst is building a decision tree and needs to determine which attribute to split on at a particular node. What concept should they consider to make this decision?",
+          "options": [
+            "Node purity",
+            "Node impurity",
+            "Leaf size",
+            "Tree depth"
+          ],
+          "correctAnswer": 1,
+          "explanation": "The attribute to split on is determined by looking at 'node impurity'. The goal is to choose the split that most reduces impurity. Node purity is the opposite, leaf size is a constraint, and tree depth is a characteristic.",
+          "source": {
+            "chunkId": 224,
+            "fileName": "Decision trees.pdf",
+            "chunkText": "-section risk, etc.\n\nHow to build a decision tree:\n\n• Start at the top of the tree.\n\n• Grow it by “splitting” attributes one by one. To determine which attribute to split, look at “node impurity.”\n\n• Assign leaf nodes the majority vote in the leaf.\n\n• When we get to the bottom, prune the tree to prevent overfitting\n\nWhy is this a good way to build a tree?\n\n1"
+          },
+          "grade": null,
+          "feedback": null
+        },
+        {
+          "id": 844,
+          "question": "A machine learning engineer is building a decision tree and wants to prevent overfitting. What technique should they use?",
+          "options": [
+            "Boosting",
+            "Bagging",
+            "Pruning",
+            "Stacking"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Pruning is a technique used to reduce the size of the tree and prevent overfitting. Boosting, bagging, and stacking are ensemble methods.",
+          "source": {
+            "chunkId": 224,
+            "fileName": "Decision trees.pdf",
+            "chunkText": "-section risk, etc.\n\nHow to build a decision tree:\n\n• Start at the top of the tree.\n\n• Grow it by “splitting” attributes one by one. To determine which attribute to split, look at “node impurity.”\n\n• Assign leaf nodes the majority vote in the leaf.\n\n• When we get to the bottom, prune the tree to prevent overfitting\n\nWhy is this a good way to build a tree?\n\n1"
+          },
+          "grade": null,
+          "feedback": null
+        },
+        {
+          "id": 845,
+          "question": "A data scientist is using the CART algorithm. Which index does CART use for splitting in classification problems?",
+          "options": [
+            "Information Gain",
+            "Gini Index",
+            "Entropy",
+            "Chi-square"
+          ],
+          "correctAnswer": 1,
+          "explanation": "CART (Classification and Regression Trees) uses the Gini index for splitting in classification problems. Information Gain is used by C4.5. Entropy is related to Information Gain.",
+          "source": {
+            "chunkId": 245,
+            "fileName": "Decision trees.pdf",
+            "chunkText": "Gin\n\nf p bet\n\nclassifica\n\ny,\n\nrop\n\ntion error for values o\n\nent\n\nof\n\nGra ph\n\ni i nde x, and mi s\n\nween 0 and 1\n\n.\n\nLearning, Springer, 2009.\n\nC4.5 uses information gain for splitting, and CART uses the Gini index. (CART only has binary splits.)\n\nPruning Let’s start with C4.5’s pruning. C4.5 recursively makes choices as to whether to prune on an attribute:\n\n• Option 1: leaving the tree as is\n\n• Option 2: replace that part of the tree with a leaf corresponding to the most frequent label in the data S going to"
+          },
+          "grade": null,
+          "feedback": null
+        },
+        {
+          "id": 846,
+          "question": "A data scientist is using the C4.5 algorithm. Which method does C4.5 use for splitting?",
+          "options": [
+            "Gini Index",
+            "Information Gain",
+            "Mean Squared Error",
+            "Variance Reduction"
+          ],
+          "correctAnswer": 1,
+          "explanation": "C4.5 uses information gain for splitting. Gini Index is used by CART. Mean Squared Error and Variance Reduction are used in regression problems.",
+          "source": {
+            "chunkId": 245,
+            "fileName": "Decision trees.pdf",
+            "chunkText": "Gin\n\nf p bet\n\nclassifica\n\ny,\n\nrop\n\ntion error for values o\n\nent\n\nof\n\nGra ph\n\ni i nde x, and mi s\n\nween 0 and 1\n\n.\n\nLearning, Springer, 2009.\n\nC4.5 uses information gain for splitting, and CART uses the Gini index. (CART only has binary splits.)\n\nPruning Let’s start with C4.5’s pruning. C4.5 recursively makes choices as to whether to prune on an attribute:\n\n• Option 1: leaving the tree as is\n\n• Option 2: replace that part of the tree with a leaf corresponding to the most frequent label in the data S going to"
+          },
+          "grade": null,
+          "feedback": null
+        },
+        {
+          "id": 847,
+          "question": "A data scientist is building a decision tree and wants to know if they should prune a particular attribute. What are the two options C4.5 considers?",
+          "options": [
+            "Leave the tree as is or expand the tree further",
+            "Replace the tree with a leaf or split the tree into multiple branches",
+            "Leave the tree as is or replace that part of the tree with a leaf",
+            "Remove the attribute or add a new attribute"
+          ],
+          "correctAnswer": 2,
+          "explanation": "C4.5 considers leaving the tree as is or replacing that part of the tree with a leaf corresponding to the most frequent label in the data going to that node. The other options are not part of the C4.5 pruning process.",
+          "source": {
+            "chunkId": 245,
+            "fileName": "Decision trees.pdf",
+            "chunkText": "Gin\n\nf p bet\n\nclassifica\n\ny,\n\nrop\n\ntion error for values o\n\nent\n\nof\n\nGra ph\n\ni i nde x, and mi s\n\nween 0 and 1\n\n.\n\nLearning, Springer, 2009.\n\nC4.5 uses information gain for splitting, and CART uses the Gini index. (CART only has binary splits.)\n\nPruning Let’s start with C4.5’s pruning. C4.5 recursively makes choices as to whether to prune on an attribute:\n\n• Option 1: leaving the tree as is\n\n• Option 2: replace that part of the tree with a leaf corresponding to the most frequent label in the data S going to"
+          },
+          "grade": null,
+          "feedback": null
+        },
+        {
+          "id": 848,
+          "question": "A data scientist is using CART and wants to prune the tree. Which method does CART use for pruning?",
+          "options": [
+            "Reduced Error Pruning",
+            "Minimal Cost Complexity Pruning",
+            "Pessimistic Error Pruning",
+            "Error-Based Pruning"
+          ],
+          "correctAnswer": 1,
+          "explanation": "CART uses minimal cost complexity pruning. The other options are pruning methods used in other decision tree algorithms.",
+          "source": {
+            "chunkId": 263,
+            "fileName": "Decision trees.pdf",
+            "chunkText": "dily want attribute A and split point s solving the following.\n\n\n\n\n\nmin (yi\nC1)2 + min\n(yi C2)2 . A, s C1 x\n\nX\n\nX\n\nC2 leaf| (A) − −\n\nmin\n\n\n\n( i leaf for each attribute A ∈{\n|x A)>s\ndo }\n\ni∈{ x ≤s} x\n\na\n\nlinesearch over s\n\nThe first term means that we’ll choose the optimal C1 = y¯{leaf|x(A)≤s . The second\n}\nterm means we’ll choose C2 = y¯{leaf x(A)>s .\n| }\n\nFor pruning, again CART does minimal cost complexity pruning:\n\ni∈S\n−y¯Sj)2 + C[# leaves in tree]\n\nX\n\nX yi\n\ncost =\n(\n\nves j x\n\nlea\n\nj\n\n16"
+          },
+          "grade": null,
+          "feedback": null
+        },
+        {
+          "id": 849,
+          "question": "A data scientist is using CART and wants to determine the cost of a subtree. What is included in the cost calculation?",
+          "options": [
+            "Misclassification error only",
+            "Number of leaves in the subtree only",
+            "Misclassification error and number of leaves in the subtree",
+            "Depth of the subtree and misclassification error"
+          ],
+          "correctAnswer": 2,
+          "explanation": "The cost of a subtree in CART's minimal cost complexity pruning includes both the misclassification error and the number of leaves in the subtree. This balances accuracy with tree complexity.",
+          "source": {
+            "chunkId": 258,
+            "fileName": "Decision trees.pdf",
+            "chunkText": "imizes the cost will have better training accuracy.\n\nX\n1[yi=leaf’s class] + C [#leaves in subtree] .\n\nX\n\ncost(subtree) =\n\n̸\n\nves j xi∈\n\nlea\n\nleaf j\n\nWe could create a sequence of nested subtrees by gradually increasing C.\n\nDraw a picture\n\nNow we need to choose C. Here’s one way to do this:\n\n• Step 1: For each C, hold out some data, split, then prune, producing a tree for each C.\n\n• Step 2: see which tree is the best on the holdout data, choose C.\n\n• Step 3: use all data, use chosen C, run split, then prune "
+          },
+          "grade": null,
+          "feedback": null
+        },
+        {
+          "id": 850,
+          "question": "A data scientist is using CART for regression. What value is assigned to each leaf?",
+          "options": [
+            "The mean of the target variable for the data points in the leaf",
+            "The median of the target variable for the data points in the leaf",
+            "A constant value",
+            "A linear function of the input features"
+          ],
+          "correctAnswer": 2,
+          "explanation": "In CART regression trees, each leaf is assigned a constant value. This value is typically the mean of the target variable for the data points in that leaf, but the key is that it's a single constant.",
+          "source": {
+            "chunkId": 260,
+            "fileName": "Decision trees.pdf",
+            "chunkText": "CART’s Regression Trees\n\nFour-part figure in\n\ncl\n\nud ing partitions, a corresponding tree , and a perspective plot of the predicti on surface .\n\nLearning, Springer, 2009.\n\nCART decides which attributes to split and where to split them. In each leaf, we’re going to assign f(x) to be a constant.\n\nCan you guess what value to assign?\n\nConsider the empirical error, using the least squares loss:\n\nRtrain(f) =\nX (yi i −f(xi))2\n\n15"
+          },
+          "grade": null,
+          "feedback": null
+        },
+        {
+          "id": 851,
+          "question": "A data scientist is using CART for regression and wants to minimize the empirical error. Which loss function is used?",
+          "options": [
+            "Log Loss",
+            "Hinge Loss",
+            "Least Squares Loss",
+            "Cross-Entropy Loss"
+          ],
+          "correctAnswer": 2,
+          "explanation": "CART regression trees use the least squares loss function to minimize the empirical error. This function calculates the sum of squared differences between the predicted and actual values.",
+          "source": {
+            "chunkId": 260,
+            "fileName": "Decision trees.pdf",
+            "chunkText": "CART’s Regression Trees\n\nFour-part figure in\n\ncl\n\nud ing partitions, a corresponding tree , and a perspective plot of the predicti on surface .\n\nLearning, Springer, 2009.\n\nCART decides which attributes to split and where to split them. In each leaf, we’re going to assign f(x) to be a constant.\n\nCan you guess what value to assign?\n\nConsider the empirical error, using the least squares loss:\n\nRtrain(f) =\nX (yi i −f(xi))2\n\n15"
+          },
+          "grade": null,
+          "feedback": null
+        },
+        {
+          "id": 852,
+          "question": "A data scientist is comparing decision trees to Naive Bayes. What is a key difference in how these models estimate probabilities?",
+          "options": [
+            "Decision trees directly estimate P(Y|X), while Naive Bayes estimates P(X|Y) and P(Y)",
+            "Naive Bayes directly estimates P(Y|X), while decision trees estimate P(X|Y) and P(Y)",
+            "Both directly estimate P(Y|X)",
+            "Both estimate P(X|Y) and P(Y)"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Decision trees are discriminative models that directly estimate P(Y|X). Naive Bayes is a generative model that estimates P(X|Y) and P(Y), then uses Bayes' rule to calculate P(Y|X).",
+          "source": {
+            "chunkId": 210,
+            "fileName": "Naïve Bayes.pdf",
+            "chunkText": "s\nover an unknown distribution over X × Y.\n\nNa¨ıve Bayes Generative Model\nEstimate P(X = x|Y = y) and P(Y = y)\nand use Bayes rule to get P(Y = y|X = x)\nDiscriminative Model\nDirectly estimate P(Y = y|X = x)\n\nMost of the top 10 classification algorithms are discriminative (K-NN, CART,\nC4.5, SVM, AdaBoost).\n\nFor Na¨ıve Bayes, we make an assumption that if we know the class label y, then we know the mechanism (the random process) of how x is generated.\n\nNa¨ıve Bayes is great for very high dimensional problems b"
+          },
+          "grade": null,
+          "feedback": null
+        },
+        {
+          "id": 853,
+          "question": "A data scientist is working with a very high-dimensional dataset. Which of the following algorithms is particularly well-suited for this type of data?",
+          "options": [
+            "Linear Regression",
+            "Decision Tree",
+            "Naive Bayes",
+            "Support Vector Machine"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Naive Bayes is great for very high dimensional problems because it makes a strong independence assumption between features, which simplifies the calculations. Decision Trees can also handle high dimensionality, but Naive Bayes is often more efficient in such cases.",
+          "source": {
+            "chunkId": 210,
+            "fileName": "Naïve Bayes.pdf",
+            "chunkText": "s\nover an unknown distribution over X × Y.\n\nNa¨ıve Bayes Generative Model\nEstimate P(X = x|Y = y) and P(Y = y)\nand use Bayes rule to get P(Y = y|X = x)\nDiscriminative Model\nDirectly estimate P(Y = y|X = x)\n\nMost of the top 10 classification algorithms are discriminative (K-NN, CART,\nC4.5, SVM, AdaBoost).\n\nFor Na¨ıve Bayes, we make an assumption that if we know the class label y, then we know the mechanism (the random process) of how x is generated.\n\nNa¨ıve Bayes is great for very high dimensional problems b"
+          },
+          "grade": null,
+          "feedback": null
+        },
+        {
+          "id": 854,
+          "question": "A data scientist is building a decision tree model in R using the `rpart` package. Which arguments should be specified in the `rpart` function to indicate the target variable and predictor variables?",
+          "options": [
+            "`x` and `y`",
+            "`formula` and `data`",
+            "`predictors` and `target`",
+            "`input` and `output`"
+          ],
+          "correctAnswer": 1,
+          "explanation": "The `rpart` function in R uses a `formula` to specify the relationship between the target variable and predictor variables, and the `data` argument to specify the dataset. The formula typically looks like `y ~ x1 + x2`, where `y` is the target variable and `x1` and `x2` are predictor variables.",
+          "source": {
+            "chunkId": 138,
+            "fileName": "R for ML.pdf",
+            "chunkText": "4.6 Na¨ıve Bayes\n\nInstall and load the e1071 package. Using the same notation as in Section 3.6, the command is:\n\n> nB_model <- naiveBayes(y ∼ x1 + x2, data=as.data.frame(cbind(y,x1,x2)))\n\n4.7 Decision Trees (CART)\n\nCART is implemented in the rpart package. Again using the formula, the command is\n\n> cart_model <- rpart(y ∼ x1 + x2, data=as.data.frame(cbind(y,x1,x2)), method=\"class\")\n\nYou can use plot.rpart and text.rpart to plot the decision tree.\n\n4.8 AdaBoost\n\nThere are a number of different boosting func"
+          },
+          "grade": null,
+          "feedback": null
+        },
+        {
+          "id": 855,
+          "question": "A data scientist has built a decision tree model using the `rpart` package in R. How can they visualize the resulting tree?",
+          "options": [
+            "Using the `plot` function directly on the model object",
+            "Using the `plot.rpart` and `text.rpart` functions",
+            "Using the `rpart.plot` function",
+            "Decision trees cannot be visualized in R"
+          ],
+          "correctAnswer": 1,
+          "explanation": "The `plot.rpart` and `text.rpart` functions are used to plot and label the decision tree created by the `rpart` package in R. `plot` alone won't work, and while `rpart.plot` is a separate package, `plot.rpart` and `text.rpart` are the standard way within the base `rpart` package.",
+          "source": {
+            "chunkId": 138,
+            "fileName": "R for ML.pdf",
+            "chunkText": "4.6 Na¨ıve Bayes\n\nInstall and load the e1071 package. Using the same notation as in Section 3.6, the command is:\n\n> nB_model <- naiveBayes(y ∼ x1 + x2, data=as.data.frame(cbind(y,x1,x2)))\n\n4.7 Decision Trees (CART)\n\nCART is implemented in the rpart package. Again using the formula, the command is\n\n> cart_model <- rpart(y ∼ x1 + x2, data=as.data.frame(cbind(y,x1,x2)), method=\"class\")\n\nYou can use plot.rpart and text.rpart to plot the decision tree.\n\n4.8 AdaBoost\n\nThere are a number of different boosting func"
+          },
+          "grade": null,
+          "feedback": null
+        }
+      ]
+    },
+    "num_questions_requested": 15,
+    "num_questions_generated": 15,
+    "latency": 42.4,
     "error": null
   }
 ]

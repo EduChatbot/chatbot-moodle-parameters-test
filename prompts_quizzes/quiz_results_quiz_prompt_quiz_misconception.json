@@ -6,211 +6,323 @@
       5,
       6
     ],
+    "quiz_data": null,
+    "num_questions_requested": 15,
+    "num_questions_generated": 0,
+    "latency": 0,
+    "error": "HTTP 404"
+  },
+  {
+    "config_label": "quiz_prompt_quiz_misconception",
+    "test_type": "full_course",
+    "topic": null,
     "quiz_data": {
-      "quizId": 37,
+      "quizId": 71,
       "courseId": 11,
-      "materialIds": [
-        5,
-        6
-      ],
+      "materialIds": [],
       "section": null,
-      "quizTitle": "K-Means Clustering and K-Nearest Neighbors Quiz",
+      "quizTitle": "Decision Tree Fundamentals Quiz",
       "questions": [
         {
-          "id": 316,
-          "question": "What is the primary goal of clustering algorithms like K-Means?",
+          "id": 886,
+          "question": "What is the primary purpose of pruning a decision tree?",
           "options": [
-            "To predict a continuous value for a new data point.",
-            "To classify data points into predefined categories.",
-            "To segment a collection of examples into clusters based on similarity.",
-            "To reduce the dimensionality of the dataset."
+            "To increase the tree's complexity and ability to fit the training data perfectly.",
+            "To reduce overfitting by simplifying the tree and improving its generalization to unseen data.",
+            "To speed up the tree's training time by removing irrelevant branches early on.",
+            "To ensure that the tree uses all available attributes in the dataset."
+          ],
+          "correctAnswer": 1,
+          "explanation": "Pruning aims to prevent overfitting. Many students think that a more complex tree is always better, but according to the material, a simpler tree generalizes better to unseen data because it avoids memorizing noise in the training set. Overfitting leads to poor performance on new data.",
+          "source": {
+            "chunkId": 224,
+            "fileName": "Decision trees.pdf",
+            "chunkText": "-section risk, etc.\n\nHow to build a decision tree:\n\n• Start at the top of the tree.\n\n• Grow it by “splitting” attributes one by one. To determine which attribute to split, look at “node impurity.”\n\n• Assign leaf nodes the majority vote in the leaf.\n\n• When we get to the bottom, prune the tree to prevent overfitting\n\nWhy is this a good way to build a tree?\n\n1"
+          },
+          "grade": null,
+          "feedback": null
+        },
+        {
+          "id": 887,
+          "question": "Which of the following best describes how a decision tree is typically built?",
+          "options": [
+            "Start with a small tree and iteratively add branches based on random attribute selection.",
+            "Start at the top and recursively split attributes based on node impurity, assigning leaf nodes the majority vote.",
+            "Build multiple small trees and combine their predictions using averaging.",
+            "Use a single attribute to create a simple tree, then refine it using complex mathematical formulas."
+          ],
+          "correctAnswer": 1,
+          "explanation": "Decision trees are built top-down by splitting attributes based on node impurity. Many students might think trees are built randomly or by averaging, but according to the material, the process involves a structured, recursive splitting approach to create branches and leaves based on data characteristics.",
+          "source": {
+            "chunkId": 224,
+            "fileName": "Decision trees.pdf",
+            "chunkText": "-section risk, etc.\n\nHow to build a decision tree:\n\n• Start at the top of the tree.\n\n• Grow it by “splitting” attributes one by one. To determine which attribute to split, look at “node impurity.”\n\n• Assign leaf nodes the majority vote in the leaf.\n\n• When we get to the bottom, prune the tree to prevent overfitting\n\nWhy is this a good way to build a tree?\n\n1"
+          },
+          "grade": null,
+          "feedback": null
+        },
+        {
+          "id": 888,
+          "question": "What is 'node impurity' used for in the context of building a decision tree?",
+          "options": [
+            "To measure the amount of missing data in a node.",
+            "To determine which attribute to split at a given node.",
+            "To calculate the probability of misclassification at a leaf node.",
+            "To identify irrelevant attributes that should be removed from the dataset."
+          ],
+          "correctAnswer": 1,
+          "explanation": "Node impurity helps determine the best attribute to split on. Many students might confuse it with missing data or misclassification probability, but according to the material, node impurity is specifically used to guide the attribute selection process during tree construction, aiming to create more homogeneous child nodes.",
+          "source": {
+            "chunkId": 224,
+            "fileName": "Decision trees.pdf",
+            "chunkText": "-section risk, etc.\n\nHow to build a decision tree:\n\n• Start at the top of the tree.\n\n• Grow it by “splitting” attributes one by one. To determine which attribute to split, look at “node impurity.”\n\n• Assign leaf nodes the majority vote in the leaf.\n\n• When we get to the bottom, prune the tree to prevent overfitting\n\nWhy is this a good way to build a tree?\n\n1"
+          },
+          "grade": null,
+          "feedback": null
+        },
+        {
+          "id": 889,
+          "question": "What is the purpose of the Gini index in the CART algorithm?",
+          "options": [
+            "To measure the overall accuracy of the decision tree.",
+            "To determine the optimal depth of the decision tree.",
+            "To evaluate the impurity of a node and guide the splitting process.",
+            "To calculate the probability of a specific class in the dataset."
           ],
           "correctAnswer": 2,
-          "explanation": "The goal of clustering, as stated in the material, is to segment data into clusters where objects within a cluster are more closely related to one another than objects assigned to different clusters. Many students think clustering is about prediction (like regression) or classification, but it's about discovering inherent groupings in the data.",
+          "explanation": "The Gini index measures node impurity in CART. Many students might think it's related to overall accuracy or tree depth, but according to the material, the Gini index is a specific metric used to assess the homogeneity of a node and guide the selection of the best split.",
           "source": {
-            "chunkId": 38,
-            "fileName": "Clustering.pdf",
-            "chunkText": "Clustering\n\nMIT 15.097 Course Notes Cynthia Rudin and S¸eyda Ertekin\n\nCredit: Dasgupta, Hastie, Tibshirani, Friedman\n\nClustering (a.k.a. data segmentation) Let’s segment a collection of examples into “clusters” so that objects within a cluster are more closely related to one another than objects assigned to different clusters. We want to assign each ex­ ample xi to a cluster k ∈{1, ...., K}.\n\nThe K-Means algorithm is a very popular way to do this. It assumes points lie\nin Euclidean space.\n\nn Input: Finite set {x }m\ni 1=1, xi ∈ R\nOutput: z1, ..., zK cluster centers\n\nGoal: Minimize\n\ncost(z1, ..., zK ) :=\nmin Ixi − zkI2\n\n2. k i The choice of the squared norm is fortuitous, it really helps simplify the math!\n\nn If we’re given points {zk}k, they can induce a Voronoi p artition of R : they break the space into cells where each cell corresponds to one of the zk’s. That is, each cell contains the region of space whose nearest representative is zk.\n\nDraw a picture\n\nWe can look at the examples in each of these regions of space, which are the clusters. Specifically,\n\nCk := {xi : the closest representative to xi is zk}.\n\nLet’s compute the cost another way. Before, we summed over examples, and then picked the right representative zk for each example. This time, we’ll sum over clusters, and look at all the examples in that cluster:\n\ncost(z1, ..., zK ) =\nIxi − zkI2\n\n2.\n\nk {i:xi∈Ck}\n\n1"
+            "chunkId": 256,
+            "fileName": "Decision trees.pdf",
+            "chunkText": "CART - Classification and Regression Trees (Breiman, Freedman, Olshen, Stone,\n1984)\n\nDoes only binary splits, not multiway splits (less interpretable, but simplifies splitting criteria).\n\nLet’s do classification first, and regression later. For splitting, CART uses the Gini index. The Gini index again is\n\nvariance of Bin(n, p)\np(1 −p) =\n= variance of Bernoulli(p).\nn For pruning, CART uses “minimal cost complexity.”\n\nEach subtree is assigned a cost. The first term in the cost is a misclassification error. Th"
           },
           "grade": null,
           "feedback": null
         },
         {
-          "id": 317,
-          "question": "In the K-Means algorithm, what does the cost function aim to minimize?",
+          "id": 890,
+          "question": "In the context of decision trees, what does 'CART' stand for?",
           "options": [
-            "The distance between cluster centers.",
-            "The number of data points in each cluster.",
-            "The sum of squared distances between each data point and its cluster center.",
-            "The variance within each cluster."
+            "Classification and Regression Trees",
+            "Continuous Attribute Regression Tree",
+            "Categorical Attribute Regression Technique",
+            "Classification and Rule-based Trees"
           ],
-          "correctAnswer": 2,
-          "explanation": "The cost function in K-Means minimizes the sum of squared distances between each data point and its assigned cluster center. Many students might think it minimizes the distance *between* cluster centers, but the algorithm focuses on the distance from points to their respective centers.",
+          "correctAnswer": 0,
+          "explanation": "CART stands for Classification and Regression Trees. Many students may not know the acronym, but according to the material, CART is a specific type of decision tree algorithm capable of both classification and regression tasks.",
           "source": {
-            "chunkId": 38,
-            "fileName": "Clustering.pdf",
-            "chunkText": "Clustering\n\nMIT 15.097 Course Notes Cynthia Rudin and S¸eyda Ertekin\n\nCredit: Dasgupta, Hastie, Tibshirani, Friedman\n\nClustering (a.k.a. data segmentation) Let’s segment a collection of examples into “clusters” so that objects within a cluster are more closely related to one another than objects assigned to different clusters. We want to assign each ex­ ample xi to a cluster k ∈{1, ...., K}.\n\nThe K-Means algorithm is a very popular way to do this. It assumes points lie\nin Euclidean space.\n\nn Input: Finite set {x }m\ni 1=1, xi ∈ R\nOutput: z1, ..., zK cluster centers\n\nGoal: Minimize\n\ncost(z1, ..., zK ) :=\nmin Ixi − zkI2\n\n2. k i The choice of the squared norm is fortuitous, it really helps simplify the math!\n\nn If we’re given points {zk}k, they can induce a Voronoi p artition of R : they break the space into cells where each cell corresponds to one of the zk’s. That is, each cell contains the region of space whose nearest representative is zk.\n\nDraw a picture\n\nWe can look at the examples in each of these regions of space, which are the clusters. Specifically,\n\nCk := {xi : the closest representative to xi is zk}.\n\nLet’s compute the cost another way. Before, we summed over examples, and then picked the right representative zk for each example. This time, we’ll sum over clusters, and look at all the examples in that cluster:\n\ncost(z1, ..., zK ) =\nIxi − zkI2\n\n2.\n\nk {i:xi∈Ck}\n\n1"
+            "chunkId": 256,
+            "fileName": "Decision trees.pdf",
+            "chunkText": "CART - Classification and Regression Trees (Breiman, Freedman, Olshen, Stone,\n1984)\n\nDoes only binary splits, not multiway splits (less interpretable, but simplifies splitting criteria).\n\nLet’s do classification first, and regression later. For splitting, CART uses the Gini index. The Gini index again is\n\nvariance of Bin(n, p)\np(1 −p) =\n= variance of Bernoulli(p).\nn For pruning, CART uses “minimal cost complexity.”\n\nEach subtree is assigned a cost. The first term in the cost is a misclassification error. Th"
           },
           "grade": null,
           "feedback": null
         },
         {
-          "id": 318,
-          "question": "What is a Voronoi partition in the context of K-Means?",
+          "id": 891,
+          "question": "What is the key difference between CART and other decision tree algorithms regarding splits?",
           "options": [
-            "A method for initializing cluster centers.",
-            "A way to visualize the cost function.",
-            "A division of the space into cells, where each cell contains the region closest to a specific cluster center.",
-            "A technique for determining the optimal number of clusters."
+            "CART allows for multiway splits, creating more interpretable trees.",
+            "CART only performs binary splits, simplifying the splitting criteria.",
+            "CART uses entropy to determine splits, while other algorithms use the Gini index.",
+            "CART can handle missing values, while other algorithms cannot."
           ],
-          "correctAnswer": 2,
-          "explanation": "A Voronoi partition divides the space into cells, with each cell containing the region closest to one of the cluster centers. Some students may confuse this with a method for *finding* the clusters, but it's actually a way to *represent* the clusters once the centers are defined.",
+          "correctAnswer": 1,
+          "explanation": "CART performs only binary splits. Many students might think CART allows multiway splits for better interpretability, but according to the material, CART's binary splits simplify the splitting criteria, even if it slightly reduces interpretability compared to multiway splits.",
           "source": {
-            "chunkId": 38,
-            "fileName": "Clustering.pdf",
-            "chunkText": "Clustering\n\nMIT 15.097 Course Notes Cynthia Rudin and S¸eyda Ertekin\n\nCredit: Dasgupta, Hastie, Tibshirani, Friedman\n\nClustering (a.k.a. data segmentation) Let’s segment a collection of examples into “clusters” so that objects within a cluster are more closely related to one another than objects assigned to different clusters. We want to assign each ex­ ample xi to a cluster k ∈{1, ...., K}.\n\nThe K-Means algorithm is a very popular way to do this. It assumes points lie\nin Euclidean space.\n\nn Input: Finite set {x }m\ni 1=1, xi ∈ R\nOutput: z1, ..., zK cluster centers\n\nGoal: Minimize\n\ncost(z1, ..., zK ) :=\nmin Ixi − zkI2\n\n2. k i The choice of the squared norm is fortuitous, it really helps simplify the math!\n\nn If we’re given points {zk}k, they can induce a Voronoi p artition of R : they break the space into cells where each cell corresponds to one of the zk’s. That is, each cell contains the region of space whose nearest representative is zk.\n\nDraw a picture\n\nWe can look at the examples in each of these regions of space, which are the clusters. Specifically,\n\nCk := {xi : the closest representative to xi is zk}.\n\nLet’s compute the cost another way. Before, we summed over examples, and then picked the right representative zk for each example. This time, we’ll sum over clusters, and look at all the examples in that cluster:\n\ncost(z1, ..., zK ) =\nIxi − zkI2\n\n2.\n\nk {i:xi∈Ck}\n\n1"
+            "chunkId": 256,
+            "fileName": "Decision trees.pdf",
+            "chunkText": "CART - Classification and Regression Trees (Breiman, Freedman, Olshen, Stone,\n1984)\n\nDoes only binary splits, not multiway splits (less interpretable, but simplifies splitting criteria).\n\nLet’s do classification first, and regression later. For splitting, CART uses the Gini index. The Gini index again is\n\nvariance of Bin(n, p)\np(1 −p) =\n= variance of Bernoulli(p).\nn For pruning, CART uses “minimal cost complexity.”\n\nEach subtree is assigned a cost. The first term in the cost is a misclassification error. Th"
           },
           "grade": null,
           "feedback": null
         },
         {
-          "id": 319,
-          "question": "According to Lemma 1, where should the representative (z) be placed to minimize the cost for a single cluster C?",
+          "id": 892,
+          "question": "What is the purpose of 'minimal cost complexity' in the context of CART?",
           "options": [
-            "At a randomly chosen point within C.",
-            "At the median of the points in C.",
-            "At the point in C farthest from all other points.",
-            "At the mean of the points in C."
+            "To minimize the computational cost of building the decision tree.",
+            "To simplify the tree by removing branches that do not significantly reduce misclassification error, balancing accuracy and complexity.",
+            "To reduce the memory usage of the decision tree model.",
+            "To ensure that the decision tree is easily interpretable by non-technical users."
+          ],
+          "correctAnswer": 1,
+          "explanation": "Minimal cost complexity is used for pruning in CART. Many students might think it's about computational cost or interpretability, but according to the material, it's a method to balance accuracy and complexity by pruning branches that don't significantly improve performance.",
+          "source": {
+            "chunkId": 256,
+            "fileName": "Decision trees.pdf",
+            "chunkText": "CART - Classification and Regression Trees (Breiman, Freedman, Olshen, Stone,\n1984)\n\nDoes only binary splits, not multiway splits (less interpretable, but simplifies splitting criteria).\n\nLet’s do classification first, and regression later. For splitting, CART uses the Gini index. The Gini index again is\n\nvariance of Bin(n, p)\np(1 −p) =\n= variance of Bernoulli(p).\nn For pruning, CART uses “minimal cost complexity.”\n\nEach subtree is assigned a cost. The first term in the cost is a misclassification error. Th"
+          },
+          "grade": null,
+          "feedback": null
+        },
+        {
+          "id": 893,
+          "question": "What is the first step in building a decision tree?",
+          "options": [
+            "Pruning the tree to avoid overfitting.",
+            "Assigning leaf nodes the majority vote.",
+            "Splitting attributes based on information gain.",
+            "Starting at the top of the tree."
           ],
           "correctAnswer": 3,
-          "explanation": "Lemma 1 states that the cost is minimized when the representative 'z' is placed at the mean of the examples in cluster C. Students may think any point 'within' the cluster would work, but the mean is the mathematically optimal location to minimize the sum of squared distances.",
+          "explanation": "The first step is to start at the top. Many students might think splitting or pruning comes first, but according to the material, the process begins with establishing the root of the tree before any splitting or pruning can occur.",
           "source": {
-            "chunkId": 39,
-            "fileName": "Clustering.pdf",
-            "chunkText": "While we’re analyzing, we’ll need to consider suboptimal partitions of the data, where an example might not be assigned to the nearest representative. So we redefine the cost:\n\nX X\n\nk ∥xi −zk∥2 2. (1)\n\ncost(C1, ..., CK; z1, ..., zK) =\n\n{i:xi∈Ck}\n\nLet’s say we only have one cluster to deal with. Call it C. The representative is z. The cost is then:\ncost(C; z) =\n∥xi −z∥2 2.\n\nX\n\n{ ∈} Where should we place z?\n\ni:xi C\n\nAs you probably guessed, we would put it at the mean of the examples in C. But\nalso, the additional cost incurred by picking z = mean(C) can be characterized\nvery simply:\n\n̸\n\nLemma 1. For any set C ⊂Rn and any z ∈Rn,\n\ncost(C; z) = cost(C, mean(C)) + C\nz mean(C) 2 2. | | · ∥− ∥\n\nLet’s go ahead and prove it. In order to do that, we need to do another biasvariance decomposition (this one’s pretty much identical to one of the ones we did before).\n\nLemma 2. Let X Rn be any random variable. For any z Rn, we have: ∈ ∈\n\nEX∥X −z∥2\n2 = EX∥X −EXX∥2\n2 + ∥z −EXX∥2\n2.\n\nProof. Let x¯ := EXX.\n\nj −z(j))2 X\n\nEX∥X −z∥2\n2 = EX\n(X(j)\n\nj\n−x¯(j) + x¯(j) −zj)2\nX\n\n= EX\n(X(j)\n\nj\n−x¯(j))2 + EX\n(x¯(j)\n\nj −zj)2 X X\n\n= EX\n(X(j)\n\nj −x¯(j))(x¯(j) −z(j)) X\n\n+2EX\n(X(j)\n\n= EX∥X −x¯∥2\n2 + EX∥x¯ −z∥2\n2 + 0. ■\n\n2"
+            "chunkId": 224,
+            "fileName": "Decision trees.pdf",
+            "chunkText": "-section risk, etc.\n\nHow to build a decision tree:\n\n• Start at the top of the tree.\n\n• Grow it by “splitting” attributes one by one. To determine which attribute to split, look at “node impurity.”\n\n• Assign leaf nodes the majority vote in the leaf.\n\n• When we get to the bottom, prune the tree to prevent overfitting\n\nWhy is this a good way to build a tree?\n\n1"
           },
           "grade": null,
           "feedback": null
         },
         {
-          "id": 320,
-          "question": "What does Lemma 3 state about the cost during the K-Means algorithm?",
+          "id": 894,
+          "question": "What is the purpose of calculating Information Gain when building a decision tree?",
           "options": [
-            "The cost monotonically increases.",
-            "The cost remains constant.",
-            "The cost oscillates randomly.",
-            "The cost monotonically decreases."
-          ],
-          "correctAnswer": 3,
-          "explanation": "Lemma 3 proves that the cost monotonically decreases during the K-Means algorithm. Some students might assume the cost could fluctuate, but the algorithm is designed to iteratively improve the cluster assignments and center locations, leading to a consistent reduction in cost.",
-          "source": {
-            "chunkId": 41,
-            "fileName": "Clustering.pdf",
-            "chunkText": "The K-Means Algorithm\n\nChoose the value of K before you start.\n\nn Initialize centers z1, ..., zK ∈ R and clusters C1, ..., CK in any way. Repeat until there is no further change in cost: for each k: Ck ←{xi : the closest representative is zk}\nfor each k: zk = mean(Ck)\n\nThis is simple enough, and takes O(Km) time per iteration.\n\nPPT demo\n\nOf course, it doesn’t always converge to the optimal solution.\n\nBut does the cost converge?\n\nLemma 3. During the course of the K-Means algorithm, the cost monotonically\ndecreases.\n\n(t) (t) (t) (t) Proof. Let z1 , ..., zK , C1 , ..., CK denote the centers and clusters at the start of\nthe tth iterate of K-Means. The first step of the iteration assigns each data point\nto its closest center, therefore, the cluster assignment is better:\n\n(t+1)\n(t+1)\n(t) (t) (t) (t) (t) (t) cost(C1 , ..., CK , z1 , ..., zK ) ≤ cost(C1 , ..., CK , z1 , ..., zK ).\n\nOn the second step, each cluster is re-centered at its mean, so the representatives\nare better. By Lemma 1,\n\n(t+1)\n(t+1)\n(t+1)\n(t+1)\n(t+1)\n(t+1)\n(t) (t) cost(C1 , ..., CK , z1 , ..., zK ) ≤ cost(C1 , ..., CK , z1 , ..., zK ).\n\n•\n\nSo does the cost converge?\n\n4"
-          },
-          "grade": null,
-          "feedback": null
-        },
-        {
-          "id": 321,
-          "question": "What is a major drawback of K-Means clustering as K (the number of clusters) changes?",
-          "options": [
-            "The algorithm becomes computationally less efficient.",
-            "The cluster membership can change arbitrarily.",
-            "The cost function always increases.",
-            "The algorithm always converges to the optimal solution."
+            "To determine the probability of a specific outcome.",
+            "To measure the reduction in entropy after splitting on an attribute.",
+            "To calculate the overall accuracy of the decision tree.",
+            "To identify the most frequent class in the dataset."
           ],
           "correctAnswer": 1,
-          "explanation": "A significant issue with K-Means is that as K changes, cluster membership can change arbitrarily. Many students might think that increasing K will always lead to a 'better' or more refined clustering, but the changes can be unpredictable and not necessarily meaningful.",
+          "explanation": "Information Gain measures the reduction in entropy. Many students might confuse it with overall accuracy or outcome probability, but according to the material, Information Gain specifically quantifies how much uncertainty is reduced by splitting on a particular attribute.",
           "source": {
-            "chunkId": 44,
-            "fileName": "Clustering.pdf",
-            "chunkText": "It’s pretty good at keeping the same cancers in the same cluster. The two breast cancers in the 2nd cluster were actually melanomas that metastasized.\n\nGenerally we cluster genes, not patients. Would really like to get something like this in practice:\n\nCourtesy of the Rockefeller University Press. Used with permission.\n\nFigure 7 from Rumfelt, Lynn, et al. \"Lineage Specification and Plasticity in CD19- Early B\ncell Precursors.\" Journal of Experimental Medicine 203 (2006): 675-87.\n\nwhere each row is a gene, and the columns are different immune cell types.\n\nA major issue with K-means: as K changes, cluster membership can change\narbitrarily. A solution is Hierarchical Clustering.\n\n• clusters at the next level of the hierarchy are created by merging clusters at the next lowest level.\n\n– lowest level: each cluster has 1 example\n\n– highest level: there’s only 1 cluster, containing all of the data.\n\n7\n\n[IMAGE_OCR 1] MLP CLP Fr.A Fr. B&C A uma B pw EBFI c D ot"
+            "chunkId": 236,
+            "fileName": "Decision trees.pdf",
+            "chunkText": "gatives.\n\nThe training probabilities\n\nin branch j are:\n\n#posj #negj ,\n#posj + #negj #posj + #negj\n\n.\n\nThe Information Gain is calculated like this:\n\nGain(S, A) = expected reduction in entropy due to branching on attribute A\n= original\n\nentropy −entropy after branching #pos #neg\n= H\n,\n#pos + #neg #pos + #neg\n\nJ\n\n−\nX #posj + #negj\n#posj #negj H , ."
           },
           "grade": null,
           "feedback": null
         },
         {
-          "id": 322,
-          "question": "What is Hierarchical Clustering used for, in the context of the K-Means drawbacks?",
+          "id": 895,
+          "question": "What does the formula Gain(S, A) = H(S) - Σ [(|Sj| / |S|) * H(Sj)] represent?",
           "options": [
-            "To speed up the K-Means algorithm.",
-            "To avoid the arbitrary changes in cluster membership as K changes.",
-            "To automatically determine the optimal value of K.",
-            "To improve the visualization of K-Means results."
+            "The overall accuracy of the decision tree.",
+            "The information gained by splitting dataset S on attribute A.",
+            "The entropy of the dataset S.",
+            "The cost complexity of the decision tree."
           ],
           "correctAnswer": 1,
-          "explanation": "Hierarchical clustering is presented as a solution to the issue of arbitrary changes in cluster membership that occur as K changes in K-Means. Students may think it's just another clustering method, but it's specifically highlighted as an alternative to address a limitation of K-Means.",
+          "explanation": "The formula represents the information gained by splitting on attribute A. Many students might think it's about overall accuracy or entropy alone, but according to the material, the formula specifically calculates the reduction in entropy achieved by the split.",
           "source": {
-            "chunkId": 44,
-            "fileName": "Clustering.pdf",
-            "chunkText": "It’s pretty good at keeping the same cancers in the same cluster. The two breast cancers in the 2nd cluster were actually melanomas that metastasized.\n\nGenerally we cluster genes, not patients. Would really like to get something like this in practice:\n\nCourtesy of the Rockefeller University Press. Used with permission.\n\nFigure 7 from Rumfelt, Lynn, et al. \"Lineage Specification and Plasticity in CD19- Early B\ncell Precursors.\" Journal of Experimental Medicine 203 (2006): 675-87.\n\nwhere each row is a gene, and the columns are different immune cell types.\n\nA major issue with K-means: as K changes, cluster membership can change\narbitrarily. A solution is Hierarchical Clustering.\n\n• clusters at the next level of the hierarchy are created by merging clusters at the next lowest level.\n\n– lowest level: each cluster has 1 example\n\n– highest level: there’s only 1 cluster, containing all of the data.\n\n7\n\n[IMAGE_OCR 1] MLP CLP Fr.A Fr. B&C A uma B pw EBFI c D ot"
+            "chunkId": 236,
+            "fileName": "Decision trees.pdf",
+            "chunkText": "gatives.\n\nThe training probabilities\n\nin branch j are:\n\n#posj #negj ,\n#posj + #negj #posj + #negj\n\n.\n\nThe Information Gain is calculated like this:\n\nGain(S, A) = expected reduction in entropy due to branching on attribute A\n= original\n\nentropy −entropy after branching #pos #neg\n= H\n,\n#pos + #neg #pos + #neg\n\nJ\n\n−\nX #posj + #negj\n#posj #negj H , ."
           },
           "grade": null,
           "feedback": null
         },
         {
-          "id": 323,
-          "question": "In K-Nearest Neighbors (K-NN), what is the primary factor used to classify a new data point?",
+          "id": 896,
+          "question": "What is the primary goal of training a supervised learning model, such as a decision tree?",
           "options": [
-            "The average distance to all other data points.",
-            "The majority vote of the labels of its K nearest neighbors.",
-            "The cluster center closest to the data point.",
-            "A predefined decision boundary."
+            "To minimize the amount of data used for training.",
+            "To create a model that can accurately predict outcomes on unseen data.",
+            "To maximize the complexity of the model.",
+            "To identify irrelevant features in the dataset."
           ],
           "correctAnswer": 1,
-          "explanation": "K-NN classifies a new data point based on the majority vote of the labels of its K nearest neighbors. Students may confuse this with K-Means, thinking it involves cluster centers, but K-NN directly uses the labels of nearby data points.",
+          "explanation": "The goal is to predict outcomes on unseen data. Many students might think the goal is to minimize data usage or maximize complexity, but according to the material, the primary objective is to build a model that generalizes well to new, unseen data.",
           "source": {
-            "chunkId": 48,
-            "fileName": "k-nearest neighbpurs.pdf",
-            "chunkText": "K-Nearest Neighbors\n\n• Classify using the majority vote of the k closest training points\n\nX X X\n\n(a) 1-nearest neighbor\n(b) 2-nearest neighbor\n(c) 3-nearest neighbor\n\nK-Nearest Neighbors\n\n• K-NN algorithm does not explicitly compute decision\nboundaries. The boundaries between distinct classes form a subset of the Voronoi diagram of the training data.\n\nEach line segment is equidistant to neighboring points.\n\n2"
+            "chunkId": 146,
+            "fileName": "Fundamentals of Learning.pdf",
+            "chunkText": "1|x) as possible.\n\n• estimate probability of failure, probability to default on loan\n\nRule mining and clustering are unsupervised methods (no ground truth), and classification, ranking, and density estimation are supervised methods (there is ground truth). In all of these problems, we do not assume we know the distribution that the data are drawn from!\n\nTraining and Testing (in-sample and out-of-sample) for supervised learning\n\nTraining: training data are input, and model f is the output.\n\ni=1 =⇒ Algorithm "
           },
           "grade": null,
           "feedback": null
         },
         {
-          "id": 324,
-          "question": "What happens if the value of K is too small in K-NN?",
+          "id": 897,
+          "question": "What is the purpose of a 'loss function' in the context of training a supervised learning model?",
           "options": [
-            "The algorithm will be more robust to noise.",
-            "The algorithm will model the noise in the data.",
-            "The algorithm will include too many points from other classes.",
-            "The decision boundaries will be smoother."
+            "To measure the computational cost of training the model.",
+            "To quantify the difference between the model's predictions and the actual values.",
+            "To identify missing values in the training data.",
+            "To determine the optimal learning rate for the model."
           ],
           "correctAnswer": 1,
-          "explanation": "If K is too small in K-NN, the algorithm will model the noise in the data. Students might think a smaller K is always better for capturing local patterns, but it makes the model overly sensitive to individual noisy data points.",
+          "explanation": "A loss function quantifies the difference between predictions and actual values. Many students might think it's about computational cost or data quality, but according to the material, the loss function specifically measures the error made by the model, guiding the learning process.",
           "source": {
-            "chunkId": 49,
-            "fileName": "k-nearest neighbpurs.pdf",
-            "chunkText": "K-Nearest Neighbors\n\n• For regression: the value for the test eXample becomes the (weighted) average of the values of the K neighbors.\n\nMaking K-NN More Powerful\n\n• A good value for K can be determined by considering a range of K values.\n\n– K too small: we’ll model the noise\n\n– K too large: neighbors include too many points from other classes\n\n• There are problems when there is a spread of distances among the K­\nNN. Use a distance-based voting scheme, where closer neighbors have\nmore influence.\n\n• The distance measure has to be meaningful – attributes should be scaled\n\n– Eg. Income varies 10,000-1,000,000 while height varies 1.5-1.8 meters\n\n3"
+            "chunkId": 147,
+            "fileName": "Fundamentals of Learning.pdf",
+            "chunkText": "upervised learning\n\nTraining: training data are input, and model f is the output.\n\ni=1 =⇒ Algorithm =⇒ f.\n\n{(xi, yi)}m\n\nTesting: You want to predict y for a new x, where (x, y) comes from the same distribution as {(xi, yi)}m\n\ni=1.\n\nThat is, (x, y) ∼ D(X , Y) and each (xi, yi) ∼ D(X , Y).\n\nCompute f(x) and compare it to y. How well does f(x) match y? Measure goodness of f using a loss function R : Y × Y → R:\n\nRtest(f) = E(x,y)∼DR(f(x), y)\n\n=\nR(f(x), y)dD(x, y). (x,y)∼D\n\n2"
           },
           "grade": null,
           "feedback": null
         },
         {
-          "id": 325,
-          "question": "What is the role of the Voronoi diagram in K-Nearest Neighbors (KNN)?",
+          "id": 898,
+          "question": "In the context of decision tree pruning with C4.5, what is being compared when deciding whether to prune a subtree to a leaf?",
           "options": [
-            "To define the cluster centers.",
-            "To visualize the cost function.",
-            "To explicitly compute decision boundaries.",
-            "To represent the boundaries between distinct classes."
+            "The number of nodes in the subtree versus the number of leaves.",
+            "The upper bound on the probability of error for the subtree versus the upper bound on the probability of error for the leaf.",
+            "The training accuracy of the subtree versus the testing accuracy of the leaf.",
+            "The depth of the subtree versus the overall depth of the tree."
           ],
-          "correctAnswer": 3,
-          "explanation": "In KNN, the boundaries between distinct classes form a subset of the Voronoi diagram of the training data. The KNN algorithm does not explicitly compute decision boundaries. Students may think that KNN explicitly calculates decision boundaries, but the boundaries are implicitly defined by the Voronoi diagram.",
+          "correctAnswer": 1,
+          "explanation": "C4.5 compares the upper bound on the probability of error. Many students might think it's about accuracy or tree structure, but according to the material, the decision to prune is based on comparing error estimates to determine if pruning improves generalization.",
           "source": {
-            "chunkId": 48,
-            "fileName": "k-nearest neighbpurs.pdf",
-            "chunkText": "K-Nearest Neighbors\n\n• Classify using the majority vote of the k closest training points\n\nX X X\n\n(a) 1-nearest neighbor\n(b) 2-nearest neighbor\n(c) 3-nearest neighbor\n\nK-Nearest Neighbors\n\n• K-NN algorithm does not explicitly compute decision\nboundaries. The boundaries between distinct classes form a subset of the Voronoi diagram of the training data.\n\nEach line segment is equidistant to neighboring points.\n\n2"
+            "chunkId": 246,
+            "fileName": "Decision trees.pdf",
+            "chunkText": "ce that part of the tree with a leaf corresponding to the most frequent label in the data S going to that part of the tree.\n\n• Option 3: replace that part of the tree with one of its subtrees, corresponding to the most common branch in the split\n\nDemo To figure out which decision to make, C4.5 computes upper bounds on the probability of error for each option. I’ll show you how to do that shortly.\n\n• Prob of error for Option 1 ≤UpperBound1\n\n• Prob of error for Option 2 ≤UpperBound2\n\n10"
+          },
+          "grade": null,
+          "feedback": null
+        },
+        {
+          "id": 899,
+          "question": "What is the main advantage of using decision trees?",
+          "options": [
+            "They always provide the most accurate predictions compared to other machine learning models.",
+            "They are easy to interpret and visualize, making them useful for understanding the decision-making process.",
+            "They can handle an unlimited number of features without overfitting.",
+            "They automatically handle missing data without any preprocessing."
+          ],
+          "correctAnswer": 1,
+          "explanation": "Decision trees are easy to interpret. Many students might think they are always the most accurate or can handle unlimited features, but according to the material, a key advantage is their interpretability, allowing users to understand how decisions are made.",
+          "source": {
+            "chunkId": 227,
+            "fileName": "Decision trees.pdf",
+            "chunkText": "Two examples of de cision trees. Opti on\n\nfir\n\non B is\n\nA i s sp lit\n\nsplit first by Ty pe.\n\nwh ile\n\nO pti\n\nst by\n\nP atr\n\non s,\n\nArtificial Intelligence: A Modern Approach, Prentice Hall, 2009.\n\nWhat we need is a formula to compute “information.” Before we do that, here’s another example. Let’s say we pick one of them (Patrons). Maybe then we’ll pick Hungry next, because it has a lot of “information”:\n\nA decision tree sp lit first by Patron s,\n\ngry\n\nthe n by Hun\n\n."
+          },
+          "grade": null,
+          "feedback": null
+        },
+        {
+          "id": 900,
+          "question": "What is the purpose of 'holdout data' when building a decision tree with cost complexity pruning?",
+          "options": [
+            "To train the decision tree model.",
+            "To select the optimal value of the complexity parameter C by evaluating the performance of different pruned trees.",
+            "To estimate the amount of missing data in the dataset.",
+            "To visualize the structure of the decision tree."
+          ],
+          "correctAnswer": 1,
+          "explanation": "Holdout data is used to select the optimal complexity parameter C. Many students might think it's used for training or data estimation, but according to the material, holdout data is specifically used to evaluate different pruned trees and choose the best level of complexity.",
+          "source": {
+            "chunkId": 258,
+            "fileName": "Decision trees.pdf",
+            "chunkText": "imizes the cost will have better training accuracy.\n\nX\n1[yi=leaf’s class] + C [#leaves in subtree] .\n\nX\n\ncost(subtree) =\n\n̸\n\nves j xi∈\n\nlea\n\nleaf j\n\nWe could create a sequence of nested subtrees by gradually increasing C.\n\nDraw a picture\n\nNow we need to choose C. Here’s one way to do this:\n\n• Step 1: For each C, hold out some data, split, then prune, producing a tree for each C.\n\n• Step 2: see which tree is the best on the holdout data, choose C.\n\n• Step 3: use all data, use chosen C, run split, then prune "
           },
           "grade": null,
           "feedback": null
         }
       ]
     },
-    "num_questions_requested": 10,
-    "num_questions_generated": 10,
-    "latency": 26.43,
+    "num_questions_requested": 15,
+    "num_questions_generated": 15,
+    "latency": 31.02,
     "error": null
+  },
+  {
+    "config_label": "quiz_prompt_quiz_misconception",
+    "test_type": "topic",
+    "topic": "decision trees",
+    "quiz_data": null,
+    "num_questions_requested": 15,
+    "num_questions_generated": 0,
+    "latency": 0,
+    "error": "HTTP 404"
   }
 ]
