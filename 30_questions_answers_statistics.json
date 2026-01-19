@@ -1,0 +1,126 @@
+[
+    {
+      "question": "How do I create a vector in R?",
+      "ground_truth": "According to the 'R for Machine Learning' document, you can create a vector using the 'c()' function (combine), the ':' operator for sequences, or the 'seq()' function."
+    },
+    {
+      "question": "What is the difference between installing and loading a package in R, and can you give an example using the 'e1071' package?",
+      "ground_truth": "Based on the R tutorial, you only need to install a package once on your computer (e.g., via the 'Packages' menu), but you must load it every time you start R using the 'library()' function. For example, to use Support Vector Machines, you would type 'library(e1071)' at the command prompt."
+    },
+    {
+      "question": "When should I use a data frame instead of a matrix in R?",
+      "ground_truth": "A data frame is similar to a matrix but is preferred when you have non-numeric attributes, such as characters or factors. Some R functions specifically require data frames, and you can convert a matrix to one using the 'as.data.frame' function."
+    },
+    {
+      "question": "In K-Means clustering, what is the mathematical goal of the algorithm regarding the cluster centers?",
+      "ground_truth": "The goal of K-Means is to minimize the cost defined as the sum over all examples of the squared Euclidean distance between each example $x_i$ and its closest cluster center $z_k$. This is expressed as minimizing $cost(z_1, ..., z_K) := \\sum_i \\min_k ||x_i - z_k||_2^2$."
+    },
+    {
+      "question": "Can you explain Lemma 1 from the clustering notes and how it relates to the cluster mean?",
+      "ground_truth": "Lemma 1 states that for any set $C$ and any representative $z$, the cost is $cost(C, z) = cost(C, mean(C)) + |C| \\cdot ||z - mean(C)||_2^2$. This shows that the additional cost incurred by picking any $z$ other than the mean is exactly the squared distance to the mean times the number of points in the cluster, implying the mean is the optimal representative."
+    },
+    {
+      "question": "What are the two main steps of the K-Means algorithm that are repeated until convergence?",
+      "ground_truth": "The algorithm repeats two steps: 1. Assignment step: $C_k \\leftarrow \\{x_i : \\text{the closest representative is } z_k\\}$. 2. Update step: $z_k = mean(C_k)$. This continues until there is no further change in the cost."
+    },
+    {
+      "question": "Why does the cost in K-Means monotonically decrease at each iteration?",
+      "ground_truth": "According to Lemma 3, the cost decreases because: 1. The first step assigns each data point to its closest center, making the cluster assignment better or equal. 2. The second step re-centers each cluster at its mean, which by Lemma 1 is the optimal location to minimize cost for that cluster."
+    },
+    {
+      "question": "What is a major disadvantage of K-Means that Hierarchical Clustering is intended to solve?",
+      "ground_truth": "A major issue with K-Means is that as the value of $K$ changes, cluster membership can change arbitrarily. Hierarchical Clustering solves this by creating a nested hierarchy where clusters at one level are created by merging clusters from the next lowest level."
+    },
+    {
+      "question": "What are the three measures of 'node impurity' mentioned in the Decision Trees notes for two-class classification?",
+      "ground_truth": "The notes list three measures: 1. Entropy: $-p \\log_2(p) - (1-p) \\log_2(1-p)$. 2. Gini index: $2p(1-p)$. 3. Misclassification error: $1 - \\max(p, 1-p)$."
+    },
+    {
+      "question": "How does C4.5 calculate 'Information Gain' for a split on attribute A?",
+      "ground_truth": "Information Gain is the expected reduction in entropy. It is calculated as the original entropy of the data $S$ minus the weighted sum of the entropies of each branch $j$ created by the split: $Gain(S, A) = H(S) - \\sum_{j=1}^J \\frac{|S_j|}{|S|} H(S_j)$."
+    },
+    {
+      "question": "Why might a data miner prefer 'Gain Ratio' over 'Information Gain'?",
+      "ground_truth": "Standard Information Gain favors attributes with numerous splits (many branches), which can lead to overfitting. The Gain Ratio penalizes these numerous splits by dividing the Gain by 'SplitInfo', which is the entropy of the partition itself."
+    },
+    {
+      "question": "What are the three pruning options C4.5 evaluates to prevent overfitting?",
+      "ground_truth": "C4.5 recursively considers: 1. Leaving the tree as is. 2. Replacing the subtree with a leaf representing the most frequent label. 3. Replacing the subtree with its most common branch. It chooses the option with the lowest upper bound on the probability of error."
+    },
+    {
+      "question": "What is the difference between how C4.5 and CART perform splits?",
+      "ground_truth": "C4.5 uses Information Gain as its splitting criterion and can perform multiway splits. CART uses the Gini index and only performs binary splits."
+    },
+    {
+      "question": "In a CART regression tree, what value is assigned to the leaf nodes and why?",
+      "ground_truth": "The value assigned to each leaf $j$ is $f_j = \\bar{y}_{Sj}$, which is the sample average of the labels for the examples in that leaf. This value is chosen because it minimizes the empirical training error (least squares loss) for that partition."
+    },
+    {
+      "question": "What is the 'Regularized Learning Expression' and which algorithms does it capture?",
+      "ground_truth": "The expression is $\\sum_i R(f(x_i), y_i) + C R_{reg}(f)$. This 'omnipresent' form captures algorithms such as SVM, boosting (AdaBoost), ridge regression, LASSO, and logistic regression."
+    },
+    {
+      "question": "According to the notes, what is 'overfitting' and how is it related to model complexity?",
+      "ground_truth": "Overfitting occurs when a model models the noise or 'memorizes' examples rather than learning a generalizable rule. It typically happens with more complex models; as model complexity increases, empirical error (training error) decreases, but true error (test error) eventually begins to increase."
+    },
+    {
+      "question": "What are the two conditions under which training error is likely to be close to test error?",
+      "ground_truth": "According to the 'Fundamentals of Learning' notes, the errors are likely to be close if: 1. The number of training examples $m$ is large. 2. The model $f$ is 'simple'."
+    },
+    {
+      "question": "What is the 'conditional expectation' and why is it the optimal function for least squares regression?",
+      "ground_truth": "The conditional expectation is $f^*(x) = E_y[y|x]$. It is the optimal predictor because it minimizes the expected prediction error $E_{x,y \\sim D}[(y - f(x))^2]$. Any other choice for $f(x)$ would increase the squared error by a term proportional to the distance from this mean."
+    },
+    {
+      "question": "Can you define 'bias' and 'variance' in the context of an estimator?",
+      "ground_truth": "Bias is defined as $Bias(\\hat{\\theta}, \\theta) := E(\\hat{\\theta}) - \\theta$ (the difference between the estimator's expected value and the true parameter). Variance is $Var(\\hat{\\theta}) = E(\\hat{\\theta} - E(\\hat{\\theta}))^2$ (how much the estimator varies around its own mean)."
+    },
+    {
+      "question": "What is the bias-variance decomposition of the expected prediction error?",
+      "ground_truth": "For a fixed point $x$, the error decomposes into three parts: $E_{y,S}[(y - f_S(x))^2] = var_{y|x}(y) + var_S(f_S(x)) + bias(f_S(x))^2$. The first is noise, the second is the variance of the estimator, and the third is the squared bias."
+    },
+    {
+      "question": "Where did the name 'logistic' come from for Logistic Regression?",
+      "ground_truth": "The term 'logistic' was named by Pierre-François Verhulst in the 19th century while modeling population growth. It was later revived by Yule in a 1925 address to the Royal Statistical Society."
+    },
+    {
+      "question": "Why does Logistic Regression use the 'log odds' (logit) model?",
+      "ground_truth": "A linear combination of features can take any real value, but probabilities must be between 0 and 1. The 'odds ratio' $P/(1-P)$ turns probabilities into positive real numbers, and the log turns those into any real number, making it compatible with a linear model $\\lambda^T x$."
+    },
+    {
+      "question": "What is the 'logistic loss' formula used in the frequentist derivation of logistic regression?",
+      "ground_truth": "The logistic loss (which is minimized) is $\\sum_{i=1}^m \\log(1 + e^{-y_i \\lambda^T x_i})$. This corresponds to minimizing the negative log-likelihood of the data."
+    },
+    {
+      "question": "Explain the difference between 'Generative' and 'Discriminative' models.",
+      "ground_truth": "Generative models (like Naïve Bayes) estimate $P(X|Y)$ and $P(Y)$ to use Bayes rule to get $P(Y|X)$. Discriminative models (like K-NN, CART, SVM) directly estimate $P(Y|X)$ to find the boundary between classes."
+    },
+    {
+      "question": "What is the 'strong assumption' made by the Naïve Bayes algorithm?",
+      "ground_truth": "Naïve Bayes assumes that the features $x^{(j)}$ are conditionally independent given the class label $y$. For example, in a spam filter, it assumes that knowing an email contains the word 'buy' doesn't change the belief that it contains the word 'price' if you already know the email is spam."
+    },
+    {
+      "question": "What is 'Laplace smoothing' in Naïve Bayes and why is it necessary?",
+      "ground_truth": "Laplace smoothing is a Bayesian shrinkage estimate that adds 'hallucinated' examples to the probability calculation. It is necessary because in high-dimensional data, a conditional probability might be zero if a word never appeared in a specific class during training; since Naïve Bayes multiplies these probabilities, a single zero would zero out the entire prediction."
+    },
+    {
+      "question": "In Association Rule Mining, how do you define the 'Support' of an itemset and the 'Confidence' of a rule?",
+      "ground_truth": "Support is the number of transactions containing the itemset. Confidence for a rule $a \\rightarrow b$ is the fraction of times itemset $b$ is purchased when itemset $a$ is purchased, calculated as $Supp(a \\cup b) / Supp(a)$."
+    },
+    {
+      "question": "What is the 'downward closure' property in rule mining?",
+      "ground_truth": "Downward closure is a monotonicity property: if an itemset is frequent (meaning its support $\\ge \\theta$), then all of its subsets must also be frequent."
+    },
+    {
+      "question": "How does the 'Prune' step work in the Apriori algorithm?",
+      "ground_truth": "During the candidate generation of itemsets of size $k$ ($C_k$), the algorithm checks every $(k-1)$-subset of a candidate. If any $(k-1)$-subset is not in the frequent itemsets of the previous level ($L_{k-1}$), the candidate is pruned."
+    },
+    {
+      "question": "In K-Nearest Neighbors, what determines the decision boundaries between classes?",
+      "ground_truth": "K-NN does not explicitly compute decision boundaries; they are formed as a subset of the Voronoi diagram of the training data, where each line segment is equidistant to neighboring points."
+    },
+    {
+      "question": "What are the computational 'Cons' of the K-NN algorithm?",
+      "ground_truth": "K-NN is expensive and slow with a runtime of $O(md)$, where $m$ is the number of examples and $d$ is the number of dimensions. To classify a new point, it must compute the distance to all $m$ training examples."
+    }
+  ]
